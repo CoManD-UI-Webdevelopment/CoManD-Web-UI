@@ -6,7 +6,7 @@
     "robots": "index/follow",
     "author": ""
   },
-  "topContent": {
+  "heroSection": {
     "sections": [
       {
         "id": "welcome",
@@ -42,6 +42,7 @@
                 "name": "RegisterForm",
                 "slotName": "tab-content-0",
                 "props": {
+                  "i18n": "$active",
                   "cmdForm": {
                     "class": "register-form",
                     "legend": {
@@ -80,7 +81,8 @@
     "sections": [
       {
         "id": "new-members",
-        "showLinkInMainNavigation": false,
+        "showLinkInMainNavigation": true,
+        "navEntry": "New Members",
         "iconClass": "icon-user-profile",
         "allowAddComponent": true,
         "contentType": "flex",
@@ -123,372 +125,39 @@
             },
             "components": [
               {
-                "name": "CmdThumbnailScroller",
+                "name": "ThumbnailScrollerWrapper",
                 "props": {
                   "cmdHeadline": {
                     "headlineText": "New male members",
                     "headlineLevel": 3,
                     "textAlign": "center"
                   },
-                  "thumbnailScrollerItems": [
-                    {
-                      "image": {
-                        "id": 1,
-                        "src": "/media/images/user-images/fake-user-1.jpg",
-                        "alt": "James",
-                        "tooltip": "Login in to view all images and profiles"
-                      },
-                      "figcaption": {
-                        "show": true,
-                        "position": "bottom",
-                        "text": "James<br />Alter 43",
-                        "textAlign": "center"
-                      }
-                    },
-                    {
-                      "image": {
-                        "id": 2,
-                        "src": "/media/images/user-images/fake-user-2.jpg",
-                        "alt": "William",
-                        "tooltip": "Login in to view all images and profiles"
-                      },
-                      "figcaption": {
-                        "show": true,
-                        "position": "bottom",
-                        "text": "William<br />Alter 38",
-                        "textAlign": "center"
-                      }
-                    },
-                    {
-                      "image": {
-                        "id": 3,
-                        "src": "/media/images/user-images/fake-user-3.jpg",
-                        "alt": "David",
-                        "tooltip": "Login in to view all images and profiles"
-                      },
-                      "figcaption": {
-                        "show": true,
-                        "position": "bottom",
-                        "text": "David<br />Alter 29",
-                        "textAlign": "center"
-                      }
-                    },
-                    {
-                      "image": {
-                        "id": 4,
-                        "src": "/media/images/user-images/fake-user-4.jpg",
-                        "alt": "Emma",
-                        "tooltip": "Login in to view all images and profiles"
-                      },
-                      "figcaption": {
-                        "show": true,
-                        "position": "bottom",
-                        "text": "Emma<br />Alter 32",
-                        "textAlign": "center"
-                      }
-                    },
-                    {
-                      "image": {
-                        "id": 5,
-                        "src": "/media/images/user-images/fake-user-5.jpg",
-                        "alt": "Olivia",
-                        "tooltip": "Login in to view all images and profiles"
-                      },
-                      "figcaption": {
-                        "show": true,
-                        "position": "bottom",
-                        "text": "Olivia<br />Alter 24",
-                        "textAlign": "center"
-                      }
-                    },
-                    {
-                      "image": {
-                        "id": 6,
-                        "src": "/media/images/user-images/fake-user-1.jpg",
-                        "alt": "Michael",
-                        "tooltip": "Login in to view all images and profiles"
-                      },
-                      "figcaption": {
-                        "show": true,
-                        "position": "bottom",
-                        "text": "Michael<br />Alter 43",
-                        "textAlign": "center"
-                      }
-                    },
-                    {
-                      "image": {
-                        "id": 7,
-                        "src": "/media/images/user-images/fake-user-2.jpg",
-                        "alt": "John",
-                        "tooltip": "Login in to view all images and profiles"
-                      },
-                      "figcaption": {
-                        "show": true,
-                        "position": "bottom",
-                        "text": "John<br />Alter 38",
-                        "textAlign": "center"
-                      }
-                    },
-                    {
-                      "image": {
-                        "id": 8,
-                        "src": "/media/images/user-images/fake-user-3.jpg",
-                        "alt": "Robert",
-                        "tooltip": "Login in to view all images and profiles"
-                      },
-                      "figcaption": {
-                        "show": true,
-                        "position": "bottom",
-                        "text": "Robert<br />Alter 29",
-                        "textAlign": "center"
-                      }
-                    },
-                    {
-                      "image": {
-                        "id": 9,
-                        "src": "/media/images/user-images/fake-user-4.jpg",
-                        "alt": "Sophia",
-                        "tooltip": "Login in to view all images and profiles"
-                      },
-                      "figcaption": {
-                        "show": true,
-                        "position": "bottom",
-                        "text": "Sophia<br />Alter 32",
-                        "textAlign": "center"
-                      }
-                    },
-                    {
-                      "image": {
-                        "id": 10,
-                        "src": "/media/images/user-images/fake-user-5.jpg",
-                        "alt": "Emily",
-                        "tooltip": "Login in to view all images and profiles"
-                      },
-                      "figcaption": {
-                        "show": true,
-                        "position": "bottom",
-                        "text": "Emily<br />Alter 24",
-                        "textAlign": "center"
-                      }
-                    }
-                  ]
+                  "gender": "male"
                 }
               },
               {
-                "name": "CmdThumbnailScroller",
+                "name": "ThumbnailScrollerWrapper",
                 "props": {
                   "cmdHeadline": {
                     "headlineText": "New female members",
                     "headlineLevel": 3,
                     "textAlign": "center"
                   },
-                  "thumbnailScrollerItems": [
-                    {
-                      "image": {
-                        "id": 3,
-                        "src": "/media/images/user-images/fake-user-5.jpg",
-                        "alt": "Veronica"
-                      },
-                      "figcaption": {
-                        "show": true,
-                        "position": "bottom",
-                        "text": "Veronica<br />Alter 23",
-                        "textAlign": "center"
-                      }
-                    },
-                    {
-                      "image": {
-                        "id": 4,
-                        "src": "/media/images/user-images/fake-user-4.jpg",
-                        "alt": "Emma",
-                        "tooltip": "Login in to view all images and profiles"
-                      },
-                      "figcaption": {
-                        "show": true,
-                        "position": "bottom",
-                        "text": "Emma<br />Alter 32",
-                        "textAlign": "center"
-                      }
-                    },
-                    {
-                      "image": {
-                        "id": 5,
-                        "src": "/media/images/user-images/fake-user-5.jpg",
-                        "alt": "Olivia",
-                        "tooltip": "Login in to view all images and profiles"
-                      },
-                      "figcaption": {
-                        "show": true,
-                        "position": "bottom",
-                        "text": "Olivia<br />Alter 24",
-                        "textAlign": "center"
-                      }
-                    },
-                    {
-                      "image": {
-                        "id": 6,
-                        "src": "/media/images/user-images/fake-user-1.jpg",
-                        "alt": "Michael",
-                        "tooltip": "Login in to view all images and profiles"
-                      },
-                      "figcaption": {
-                        "show": true,
-                        "position": "bottom",
-                        "text": "Michael<br />Alter 43",
-                        "textAlign": "center"
-                      }
-                    },
-                    {
-                      "image": {
-                        "id": 7,
-                        "src": "/media/images/user-images/fake-user-2.jpg",
-                        "alt": "John",
-                        "tooltip": "Login in to view all images and profiles"
-                      },
-                      "figcaption": {
-                        "show": true,
-                        "position": "bottom",
-                        "text": "John<br />Alter 38",
-                        "textAlign": "center"
-                      }
-                    },
-                    {
-                      "image": {
-                        "id": 8,
-                        "src": "/media/images/user-images/fake-user-3.jpg",
-                        "alt": "Robert",
-                        "tooltip": "Login in to view all images and profiles"
-                      },
-                      "figcaption": {
-                        "show": true,
-                        "position": "bottom",
-                        "text": "Robert<br />Alter 29",
-                        "textAlign": "center"
-                      }
-                    },
-                    {
-                      "image": {
-                        "id": 8,
-                        "src": "/media/images/user-images/fake-user-4.jpg",
-                        "alt": "Sophia",
-                        "tooltip": "Login in to view all images and profiles"
-                      },
-                      "figcaption": {
-                        "show": true,
-                        "position": "bottom",
-                        "text": "Sophia<br />Alter 32",
-                        "textAlign": "center"
-                      }
-                    },
-                    {
-                      "image": {
-                        "id": 8,
-                        "src": "/media/images/user-images/fake-user-5.jpg",
-                        "alt": "Emily",
-                        "tooltip": "Login in to view all images and profiles"
-                      },
-                      "figcaption": {
-                        "show": true,
-                        "position": "bottom",
-                        "text": "Emily<br />Alter 24",
-                        "textAlign": "center"
-                      }
-                    }
-                  ]
+                  "gender": "female"
                 }
               }
             ]
           },
           {
-            "name": "CmdBox",
-            "props": {
-              "cmdHeadline": {
-                "headlineText": "Most viewed profiles",
-                "headlineLevel": 4
-              },
-              "useSlots": [
-                "body"
-              ],
-              "useDefaultPadding": false,
-              "stretchVertically": true
-            },
-            "components": [
-              {
-                "name": "ListWithImages",
-                "slotName": "body",
-                "props": {
-                  "items": [
-                    {
-                      "image": {
-                        "src": "/media/images/user-images/fake-user-4.jpg",
-                        "alt": "alt text",
-                        "tooltip": "Login in to view all images and profiles"
-                      },
-                      "text": "<span>Emma, 32</span><span>380 views</span>",
-                      "cmdLink": {
-                          "type": "href",
-                          "path": "#"
-                      }
-                    },
-                    {
-                      "image": {
-                        "src": "/media/images/user-images/fake-user-5.jpg",
-                        "alt": "alt text",
-                        "tooltip": "Login in to view all images and profiles"
-                      },
-                      "text": "<span>Olivia, 32</span><span>297 views</span>",
-                      "cmdLink": {
-                        "type": "href",
-                        "path": "#"
-                      }
-                    },
-                    {
-                      "image": {
-                        "src": "/media/images/user-images/fake-user-1.jpg",
-                        "alt": "alt text",
-                        "tooltip": "Login in to view all images and profiles"
-                      },
-                      "text": "<span>James, 43</span><span>256 views</span>",
-                      "cmdLink": {
-                        "type": "href",
-                        "path": "#"
-                      }
-                    },
-                    {
-                      "image": {
-                        "src": "/media/images/user-images/fake-user-3.jpg",
-                        "alt": "alt text",
-                        "tooltip": "Login in to view all images and profiles"
-                      },
-                      "text": "<span>David, 29</span><span>153 views</span>",
-                      "cmdLink": {
-                        "type": "href",
-                        "path": "#"
-                      }
-                    },
-                    {
-                      "image": {
-                        "src": "/media/images/user-images/fake-user-2.jpg",
-                        "alt": "alt text",
-                        "tooltip": "Login in to view all images and profiles"
-                      },
-                      "text": "<span>William, 38</span><span>69 views</span>",
-                      "cmdLink": {
-                        "type": "href",
-                        "path": "#"
-                      }
-                    }
-                  ]
-                }
-              }
-            ]
+            "name": "MostViewedProfilesWrapper"
           }
         ]
       },
       {
         "id": "services",
-        "showLinkInMainNavigation": false,
-        "iconClass": "icon-user-profile",
+        "showLinkInMainNavigation": true,
+        "navEntry": "Services",
+        "iconClass": "icon-cogs",
         "allowAddComponent": true,
         "contentType": "flex",
         "cmdHeadline": {

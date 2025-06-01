@@ -99,6 +99,16 @@
       "navigation": [
         "main"
       ]
+    }
+  ],
+  "pagesx": [
+    {
+      "id": "homepage",
+      "iconClass": "icon-home",
+      "navEntry": "main_navigation.menuentry.homepage",
+      "navigation": [
+        "main"
+      ]
     },
     {
       "id": "about-us",

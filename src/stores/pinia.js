@@ -208,6 +208,8 @@ export const usePiniaStore = defineStore("pinia", {
             }
         },
         updateContent(componentPath, updateHandlers) {
+            console.log("componentPath", componentPath)
+            console.log("updateHandlers", updateHandlers)
             const component = findComponent(this.site, componentPath)?.node
             if (!component || !Array.isArray(updateHandlers) || updateHandlers.length === 0) {
                 return
@@ -254,3 +256,5 @@ export const usePiniaStore = defineStore("pinia", {
         }
     }
 })
+
+export {findComponent}

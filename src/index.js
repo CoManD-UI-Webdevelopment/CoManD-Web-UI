@@ -94,6 +94,10 @@ function bootstrap(app, routerConfigurer) {
         app.component(name, component)
     })
     Object.entries(componentLibraryComponents).forEach(([name, component]) => {
+       if(name==="EditComponentWrapper") {
+           return
+       }
+
         app.component(name, component)
     })
     Object.entries(directives).forEach(([name, directive]) => {

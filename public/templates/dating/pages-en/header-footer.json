@@ -59,7 +59,7 @@
                   },
                   "type": "href",
                   "text": "CoManD-Website",
-                  "path": "http://www.comand-cms.com",
+                  "path": "https://www.comand-ui.com",
                   "target": "_blank",
                   "tooltip": "Open CoManD-website in a new tab"
                 }
@@ -79,6 +79,7 @@
       {
         "name": "CmdSwitchLanguage",
         "props": {
+          "pathFlags": "https://comand-ui.com/samples/images/flags",
           "languages": [
             {
               "iso2": "de",
@@ -97,6 +98,94 @@
                 "type": "router"
               },
               "path": "/en"
+            }
+          ]
+        }
+      },
+      {
+        "name": "CmdOpeningHours",
+        "props": {
+          "textHolidays": "Holidays closed",
+          "textMiscInfo": "Miscellaneous information",
+          "openingHours": [
+            {
+              "day": "Mondays",
+              "am": {
+                "fromTime": "08:00",
+                "tillTime": "12:00",
+                "displayText": "open"
+              },
+              "pm": {
+                "fromTime": "13:00",
+                "tillTime": "18:00",
+                "displayText": "closed"
+              }
+            },
+            {
+              "day": "Tu",
+              "am": {
+                "fromTime": "08:00",
+                "tillTime": "12:01"
+              },
+              "pm": {
+                "fromTime": "13:00",
+                "tillTime": "18:00"
+              }
+            },
+            {
+              "day": "We",
+              "am": {
+                "fromTime": "08:00",
+                "tillTime": "12:00"
+              },
+              "pm": {
+                "fromTime": "13:00",
+                "tillTime": "18:00"
+              }
+            },
+            {
+              "day": "Th",
+              "am": {
+                "fromTime": "08:00",
+                "tillTime": "12:00"
+              },
+              "pm": {
+                "fromTime": "13:00",
+                "tillTime": "18:00"
+              }
+            },
+            {
+              "day": "Fr",
+              "am": {
+                "fromTime": "08:00",
+                "tillTime": "12:00"
+              },
+              "pm": {
+                "fromTime": "13:00",
+                "tillTime": "18:00"
+              }
+            },
+            {
+              "day": "Sa",
+              "am": {
+                "fromTime": "08:00",
+                "tillTime": "12:00"
+              },
+              "pm": {
+                "fromTime": "13:00",
+                "tillTime": "18:00"
+              }
+            },
+            {
+              "day": "So",
+              "am": {
+                "fromTime": "08:00",
+                "tillTime": "12:00"
+              },
+              "pm": {
+                "fromTime": "13:00",
+                "tillTime": "18:00"
+              }
             }
           ]
         }

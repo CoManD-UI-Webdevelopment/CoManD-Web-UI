@@ -25,4 +25,8 @@ export { default as InnerWrapper } from "./components/InnerWrapper.vue"
 export { default as ContentSection } from "./components/ContentSection.vue"
 export { default as RenderComponents } from "./components/RenderComponents.vue"
 export { default as PageWrapper } from "./components/PageWrapper.vue"
+export { default as ThumbnailScrollerWrapper } from "./components/ThumbnailScrollerWrapper.vue"
+export { default as MostViewedProfilesWrapper } from "./components/MostViewedProfilesWrapper.vue"
 export { default as EditModeSectionWrapper } from "./components/editmode/EditModeSectionWrapper.vue"
+export { default as EditComponentWrapper } from "./components/editmode/EditComponentWrapper.vue"
+

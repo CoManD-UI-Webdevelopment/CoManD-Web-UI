@@ -6,7 +6,7 @@
     "robots": "index/follow",
     "author": ""
   },
-  "topContent": {
+  "heroSection": {
     "sections": [
       {
         "id": "slideshow",

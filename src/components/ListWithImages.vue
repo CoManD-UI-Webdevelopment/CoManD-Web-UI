@@ -45,6 +45,7 @@ export default {
         margin: inherit;
         align-items: center;
         transition: var(--local-transition);
+        padding: 0 var(--default-padding);
 
         .cmd-link {
             width: 100%;
@@ -52,13 +53,14 @@ export default {
             gap: var(--default-gap);
             align-items: center;
             text-decoration: none;
-            padding: 0 var(--default-padding);
+            padding: 0;
             justify-content: flex-start;
             transition: var(--local-transition);
 
             img {
-                max-width: 7rem;
+                max-height: 5rem;
                 margin: 0;
+                filter: blur(.5rem);
             }
         }
 

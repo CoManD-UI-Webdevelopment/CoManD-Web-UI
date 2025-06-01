@@ -98,7 +98,7 @@ export default {
                 {
                     "name": "facebook",
                     "id": "social-network-facebook",
-                    "path": "https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fdevelopment.comand-cms.com%2Fmodule%2Fteam.html",
+                    "path": "https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fdevelopment.comand-ui.com%2Fmodule%2Fteam.html",
                     "tooltip": "Share this page on facebook",
                     "iconClass": "icon-facebook",
                     "linkText": "Share",
@@ -107,7 +107,7 @@ export default {
                 {
                     "name": "twitter",
                     "id": "social-network-twitter",
-                    "path": "https://twitter.com/home?status=http%3A%2F%2Fdevelopment.comand-cms.com%2Fmodule%2Fteam.html",
+                    "path": "https://twitter.com/home?status=http%3A%2F%2Fdevelopment.comand-ui.com%2Fmodule%2Fteam.html",
                     "tooltip": "Share this page on twitter",
                     "iconClass": "icon-twitter",
                     "linkText": "Share",
@@ -116,7 +116,7 @@ export default {
                 {
                     "name": "xing",
                     "id": "social-network-xing",
-                    "path": "https://www.xing.com/spi/shares/new?sc_p=b7910_cb&amp;url=http%3A%2F%2Fdevelopment.comand-cms.com%2Fmodule%2Fteam.html",
+                    "path": "https://www.xing.com/spi/shares/new?sc_p=b7910_cb&amp;url=http%3A%2F%2Fdevelopment.comand-ui.com%2Fmodule%2Fteam.html",
                     "tooltip": "Share this page on xing",
                     "iconClass": "icon-xing",
                     "linkText": "Share",
@@ -125,7 +125,7 @@ export default {
                 {
                     "name": "linked in",
                     "id": "social-network-linkedin",
-                    "path": "https://www.linkedin.com/cws/share?url=http%3A%2F%2Fdevelopment.comand-cms.com%2Fmodule%2Fteam.html",
+                    "path": "https://www.linkedin.com/cws/share?url=http%3A%2F%2Fdevelopment.comand-ui.com%2Fmodule%2Fteam.html",
                     "tooltip": "Share this page on linkedin",
                     "iconClass": "icon-linkedin",
                     "linkText": "Share",

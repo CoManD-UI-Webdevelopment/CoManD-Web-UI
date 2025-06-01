@@ -77,9 +77,10 @@ main {
             padding-bottom: var(--section-padding-bottom);
         }
 
+        /*
         &:nth-child(even) {
             background: var(--default-background);
-        }
+        }*/
 
         &.page-header-section, &.page-footer-section {
             section {

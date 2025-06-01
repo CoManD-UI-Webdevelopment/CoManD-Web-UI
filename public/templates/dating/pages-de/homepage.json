@@ -6,7 +6,7 @@
     "robots": "index/follow",
     "author": ""
   },
-  "topContent": {
+  "heroSection": {
     "sections": [
       {
         "id": "welcome",
@@ -82,7 +82,8 @@
     "sections": [
       {
         "id": "new-members",
-        "showLinkInMainNavigation": false,
+        "showLinkInMainNavigation": true,
+        "navEntry": "Neue Mitglieder",
         "iconClass": "icon-user-profile",
         "allowAddComponent": true,
         "contentType": "flex",
@@ -97,9 +98,9 @@
               "stretchVertically": true,
               "cmdHeadline": {
                 "headlineLevel": 4,
-                "headlineText": "10 Top-Dating-Tipps"
+                "headlineText": "Top 10 Dating-Tipps"
               },
-              "textBody": "Erhöhen Sie die Chancen auf einen erfolgreichen Flirt mit diesen 10 Dating-Tipps.",
+              "textBody": "Erhöhen Sie Ihre Flirtchancen mit diesen 10 Datingtipps.",
               "cmdImage": {
                 "image": {
                   "src": "/media/images/content-images/couple2.jpg",
@@ -120,385 +121,45 @@
           {
             "name": "CmdContainer",
             "props": {
+              "id": "new-members-container",
               "containerType": "flex",
               "contentOrientation": "vertical"
             },
             "components": [
               {
-                "name": "CmdThumbnailScroller",
+                "name": "ThumbnailScrollerWrapper",
                 "props": {
-                  "i18n": "$active",
                   "cmdHeadline": {
-                    "headlineText": "Neu angemeldete Männer",
+                    "headlineText": "Neue männliche Mitglieder",
                     "headlineLevel": 3,
                     "textAlign": "center"
                   },
-                  "thumbnailScrollerItems": [
-                    {
-                      "image": {
-                        "id": 1,
-                        "src": "/media/images/user-images/fake-user-1.jpg",
-                        "props": {
-                          "cmdHeadline": {
-                            "headlineText": "Überschrift Text Block",
-                            "headlineLevel": "2"
-                          },
-                          "htmlContent": "<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.</p><p> Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugia a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. <br />Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc.</p>"
-                        },            "alt": "James",
-                        "tooltip": "Melden Sie sich an, um alle Bilder und Profile anzusehen"
-                      },
-                      "figcaption": {
-                        "show": true,
-                        "position": "bottom",
-                        "text": "James<br />Alter 43",
-                        "textAlign": "center"
-                      }
-                    },
-                    {
-                      "image": {
-                        "id": 2,
-                        "src": "/media/images/user-images/fake-user-2.jpg",
-                        "alt": "William",
-                        "tooltip": "Melden Sie sich an, um alle Bilder und Profile anzusehen"
-                      },
-                      "figcaption": {
-                        "show": true,
-                        "position": "bottom",
-                        "text": "William<br />Alter 38",
-                        "textAlign": "center"
-                      }
-                    },
-                    {
-                      "image": {
-                        "id": 3,
-                        "src": "/media/images/user-images/fake-user-3.jpg",
-                        "alt": "David",
-                        "tooltip": "Melden Sie sich an, um alle Bilder und Profile anzusehen"
-                      },
-                      "figcaption": {
-                        "show": true,
-                        "position": "bottom",
-                        "text": "David<br />Alter 29",
-                        "textAlign": "center"
-                      }
-                    },
-                    {
-                      "image": {
-                        "id": 4,
-                        "src": "/media/images/user-images/fake-user-4.jpg",
-                        "alt": "Emma",
-                        "tooltip": "Melden Sie sich an, um alle Bilder und Profile anzusehen"
-                      },
-                      "figcaption": {
-                        "show": true,
-                        "position": "bottom",
-                        "text": "Emma<br />Alter 32",
-                        "textAlign": "center"
-                      }
-                    },
-                    {
-                      "image": {
-                        "id": 5,
-                        "src": "/media/images/user-images/fake-user-5.jpg",
-                        "alt": "Olivia",
-                        "tooltip": "Melden Sie sich an, um alle Bilder und Profile anzusehen"
-                      },
-                      "figcaption": {
-                        "show": true,
-                        "position": "bottom",
-                        "text": "Olivia<br />Alter 24",
-                        "textAlign": "center"
-                      }
-                    },
-                    {
-                      "image": {
-                        "id": 6,
-                        "src": "/media/images/user-images/fake-user-1.jpg",
-                        "alt": "Michael",
-                        "tooltip": "Melden Sie sich an, um alle Bilder und Profile anzusehen"
-                      },
-                      "figcaption": {
-                        "show": true,
-                        "position": "bottom",
-                        "text": "Michael<br />Alter 43",
-                        "textAlign": "center"
-                      }
-                    },
-                    {
-                      "image": {
-                        "id": 7,
-                        "src": "/media/images/user-images/fake-user-2.jpg",
-                        "alt": "John",
-                        "tooltip": "Melden Sie sich an, um alle Bilder und Profile anzusehen"
-                      },
-                      "figcaption": {
-                        "show": true,
-                        "position": "bottom",
-                        "text": "John<br />Alter 38",
-                        "textAlign": "center"
-                      }
-                    },
-                    {
-                      "image": {
-                        "id": 8,
-                        "src": "/media/images/user-images/fake-user-3.jpg",
-                        "alt": "Robert",
-                        "tooltip": "Melden Sie sich an, um alle Bilder und Profile anzusehen"
-                      },
-                      "figcaption": {
-                        "show": true,
-                        "position": "bottom",
-                        "text": "Robert<br />Alter 29",
-                        "textAlign": "center"
-                      }
-                    },
-                    {
-                      "image": {
-                        "id": 9,
-                        "src": "/media/images/user-images/fake-user-4.jpg",
-                        "alt": "Sophia",
-                        "tooltip": "Melden Sie sich an, um alle Bilder und Profile anzusehen"
-                      },
-                      "figcaption": {
-                        "show": true,
-                        "position": "bottom",
-                        "text": "Sophia<br />Alter 32",
-                        "textAlign": "center"
-                      }
-                    },
-                    {
-                      "image": {
-                        "id": 10,
-                        "src": "/media/images/user-images/fake-user-5.jpg",
-                        "alt": "Emily",
-                        "tooltip": "Melden Sie sich an, um alle Bilder und Profile anzusehen"
-                      },
-                      "figcaption": {
-                        "show": true,
-                        "position": "bottom",
-                        "text": "Emily<br />Alter 24",
-                        "textAlign": "center"
-                      }
-                    }
-                  ]
+                  "gender": "male"
                 }
               },
               {
-                "name": "CmdThumbnailScroller",
+                "name": "ThumbnailScrollerWrapper",
                 "props": {
-                  "i18n": "$active",
                   "cmdHeadline": {
-                    "headlineText": "Neu angemeldete Frauen",
+                    "headlineText": "Neue weibliche Mitglieder",
                     "headlineLevel": 3,
                     "textAlign": "center"
                   },
-                  "thumbnailScrollerItems": [
-                    {
-                      "image": {
-                        "id": 3,
-                        "src": "/media/images/user-images/fake-user-5.jpg",
-                        "alt": "Veronica"
-                      },
-                      "figcaption": {
-                        "show": true,
-                        "position": "bottom",
-                        "text": "Veronica<br />Alter 23",
-                        "textAlign": "center"
-                      }
-                    },
-                    {
-                      "image": {
-                        "id": 4,
-                        "src": "/media/images/user-images/fake-user-4.jpg",
-                        "alt": "Emma",
-                        "tooltip": "Melden Sie sich an, um alle Bilder und Profile anzusehen"
-                      },
-                      "figcaption": {
-                        "show": true,
-                        "position": "bottom",
-                        "text": "Emma<br />Alter 32",
-                        "textAlign": "center"
-                      }
-                    },
-                    {
-                      "image": {
-                        "id": 5,
-                        "src": "/media/images/user-images/fake-user-5.jpg",
-                        "alt": "Olivia",
-                        "tooltip": "Melden Sie sich an, um alle Bilder und Profile anzusehen"
-                      },
-                      "figcaption": {
-                        "show": true,
-                        "position": "bottom",
-                        "text": "Olivia<br />Alter 24",
-                        "textAlign": "center"
-                      }
-                    },
-                    {
-                      "image": {
-                        "id": 6,
-                        "src": "/media/images/user-images/fake-user-1.jpg",
-                        "alt": "Michael",
-                        "tooltip": "Melden Sie sich an, um alle Bilder und Profile anzusehen"
-                      },
-                      "figcaption": {
-                        "show": true,
-                        "position": "bottom",
-                        "text": "Michael<br />Alter 43",
-                        "textAlign": "center"
-                      }
-                    },
-                    {
-                      "image": {
-                        "id": 7,
-                        "src": "/media/images/user-images/fake-user-2.jpg",
-                        "alt": "John",
-                        "tooltip": "Melden Sie sich an, um alle Bilder und Profile anzusehen"
-                      },
-                      "figcaption": {
-                        "show": true,
-                        "position": "bottom",
-                        "text": "John<br />Alter 38",
-                        "textAlign": "center"
-                      }
-                    },
-                    {
-                      "image": {
-                        "id": 8,
-                        "src": "/media/images/user-images/fake-user-3.jpg",
-                        "alt": "Robert",
-                        "tooltip": "Melden Sie sich an, um alle Bilder und Profile anzusehen"
-                      },
-                      "figcaption": {
-                        "show": true,
-                        "position": "bottom",
-                        "text": "Robert<br />Alter 29",
-                        "textAlign": "center"
-                      }
-                    },
-                    {
-                      "image": {
-                        "id": 8,
-                        "src": "/media/images/user-images/fake-user-4.jpg",
-                        "alt": "Sophia",
-                        "tooltip": "Melden Sie sich an, um alle Bilder und Profile anzusehen"
-                      },
-                      "figcaption": {
-                        "show": true,
-                        "position": "bottom",
-                        "text": "Sophia<br />Alter 32",
-                        "textAlign": "center"
-                      }
-                    },
-                    {
-                      "image": {
-                        "id": 8,
-                        "src": "/media/images/user-images/fake-user-5.jpg",
-                        "alt": "Emily",
-                        "tooltip": "Melden Sie sich an, um alle Bilder und Profile anzusehen"
-                      },
-                      "figcaption": {
-                        "show": true,
-                        "position": "bottom",
-                        "text": "Emily<br />Alter 24",
-                        "textAlign": "center"
-                      }
-                    }
-                  ]
+                  "gender": "female"
                 }
               }
             ]
           },
           {
-            "name": "CmdBox",
-            "props": {
-              "cmdHeadline": {
-                "headlineText": "Meistaufgerufene Profile",
-                "headlineLevel": 4
-              },
-              "useSlots": [
-                "body"
-              ],
-              "useBoxBodyPadding": false,
-              "stretchVertically": true
-            },
-            "components": [
-              {
-                "name": "ListWithImages",
-                "slotName": "body",
-                "props": {
-                  "items": [
-                    {
-                      "image": {
-                        "src": "/media/images/user-images/fake-user-4.jpg",
-                        "alt": "alt text",
-                        "tooltip": "Melden Sie sich an, um alle Bilder und Profile anzusehen"
-                      },
-                      "text": "<span>Emma, 32</span><span>380 Aufrufe</span>",
-                      "cmdLink": {
-                          "type": "href",
-                          "path": "#"
-                      }
-                    },
-                    {
-                      "image": {
-                        "src": "/media/images/user-images/fake-user-5.jpg",
-                        "alt": "alt text",
-                        "tooltip": "Melden Sie sich an, um alle Bilder und Profile anzusehen"
-                      },
-                      "text": "<span>Olivia, 32</span><span>297 Aufrufe</span>",
-                      "cmdLink": {
-                        "type": "href",
-                        "path": "#"
-                      }
-                    },
-                    {
-                      "image": {
-                        "src": "/media/images/user-images/fake-user-1.jpg",
-                        "alt": "alt text",
-                        "tooltip": "Melden Sie sich an, um alle Bilder und Profile anzusehen"
-                      },
-                      "text": "<span>James, 43</span><span>256 Aufrufe</span>",
-                      "cmdLink": {
-                        "type": "href",
-                        "path": "#"
-                      }
-                    },
-                    {
-                      "image": {
-                        "src": "/media/images/user-images/fake-user-3.jpg",
-                        "alt": "alt text",
-                        "tooltip": "Melden Sie sich an, um alle Bilder und Profile anzusehen"
-                      },
-                      "text": "<span>David, 29</span><span>153 Aufrufe</span>",
-                      "cmdLink": {
-                        "type": "href",
-                        "path": "#"
-                      }
-                    },
-                    {
-                      "image": {
-                        "src": "/media/images/user-images/fake-user-2.jpg",
-                        "alt": "alt text",
-                        "tooltip": "Melden Sie sich an, um alle Bilder und Profile anzusehen"
-                      },
-                      "text": "<span>William, 38</span><span>69 Aufrufe</span>",
-                      "cmdLink": {
-                        "type": "href",
-                        "path": "#"
-                      }
-                    }
-                  ]
-                }
-              }
-            ]
+            "name": "MostViewedProfilesWrapper"
           }
         ]
       },
       {
         "id": "services",
-        "showLinkInMainNavigation": false,
-        "iconClass": "icon-user-profile",
+        "showLinkInMainNavigation": true,
+        "navEntry": "Services",
+        "iconClass": "icon-cogs",
         "allowAddComponent": true,
         "contentType": "flex",
         "contentOrientation": "vertical",

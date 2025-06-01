@@ -44,7 +44,8 @@ export default {
             const linkTagCdn = document.createElement("link")
             linkTagCdn.setAttribute("rel", "stylesheet")
             linkTagCdn.setAttribute("type", "text/css")
-            linkTagCdn.setAttribute("href", "https://cdn.jsdelivr.net/npm/comand-frontend-framework@4.0.71/dist/templates/dating.min.css")
+            linkTagCdn.href = "../node_modules/comand-frontend-framework/dist/templates/dating.css"
+           // linkTagCdn.setAttribute("href", "https://cdn.jsdelivr.net/npm/comand-frontend-framework@4/dist/templates/dating.min.css")
             document.head.append(linkTagCdn)
         }
 

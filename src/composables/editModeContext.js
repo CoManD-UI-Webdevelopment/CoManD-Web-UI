@@ -1,9 +1,9 @@
 import {reactive} from "vue"
-import {usePiniaStore} from "../stores/pinia.js"
+import {useWebUIStore} from "../stores/web-ui.js"
 
 export function useEditModeContext() {
 
-    const store = usePiniaStore()
+    const store = useWebUIStore()
     const state = reactive({})
 
     return {

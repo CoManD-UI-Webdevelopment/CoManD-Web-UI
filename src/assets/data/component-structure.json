@@ -154,7 +154,7 @@
       "networks": [
         {
           "id": "social-network-facebook",
-          "path": "https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fdevelopment.comand-cms.com%2Fmodule%2Fteam.html",
+          "path": "https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fdevelopment.comand-ui.com%2Fmodule%2Fteam.html",
           "tooltip": "Share this page on facebook",
           "iconClass": "icon-facebook",
           "linkText": "Share"

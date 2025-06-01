@@ -9,7 +9,7 @@
     >
         <template v-slot:top-content>
             <ContentSection
-                v-for="(section, index) in topContentActiveSections"
+                v-for="(section, index) in heroSectionActiveSections"
                 :key="index"
                 :id="section.id"
                 :cmdHeadline="section.cmdHeadline"
@@ -170,7 +170,7 @@ export default {
             "asideLeftColumnContent",
             "asideRightColumnShow",
             "asideRightColumnContent",
-            "topContentActiveSections",
+            "heroSectionActiveSections",
             "pageHeadlineText",
             "cookieDisclaimer",
         ]),

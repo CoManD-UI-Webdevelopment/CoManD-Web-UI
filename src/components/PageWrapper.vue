@@ -5,47 +5,51 @@
          :style="{'scroll-padding-top': heightSiteHeader + 'px'}"
          v-fancybox
     >
-        <!-- begin slot site-header -->
-        <slot name="site-header"></slot>
-        <!-- end slot site-header -->
+        <!-- begin hero-section-wrapper -->
+        <div class="hero-section-wrapper">
+            <!-- begin slot site-header -->
+            <slot name="site-header"></slot>
+            <!-- end slot site-header -->
 
-        <!-- begin cmd-site-header -->
-        <CmdSiteHeader
-            v-if="cmdSiteHeader"
-            :cmdMainNavigation="{navigationEntries: cmdSiteHeader.mainNavigationEntries}"
-            :closeOffcanvas="{ iconClass: 'icon-cancel', text: label('main_navigation.close_navigation'), showText: true}"
-            :navigationInline="cmdSiteHeader.navigationInline"
-            @offcanvas="offcanvasToggled"
-        >
-            <template v-slot:top-header>
-                <!-- begin cmd-list-of-links (for top-header-navigation) -->
-                <CmdListOfLinks
-                    v-if="cmdSiteHeader.topHeaderNavigationEntries"
-                    :links="cmdSiteHeader.topHeaderNavigationEntries"
-                    orientation="horizontal"
-                    align="right"
-                />
-                <!-- end cmd-list-of-links (for top-header-navigation) -->
-            </template>
-            <template v-slot:logo>
-                <!-- begin cmd-company-logo -->
-                <CmdCompanyLogo
-                    v-if="cmdSiteHeader.cmdCompanyLogo?.pathDefaultLogo"
-                    :altText="cmdSiteHeader.cmdCompanyLogo?.altText"
-                    :pathDefaultLogo="cmdSiteHeader.cmdCompanyLogo?.pathDefaultLogo"
-                    :pathDarkmodeLogo="cmdSiteHeader.cmdCompanyLogo?.pathDarkmodeLogo"
-                />
-                <!-- end cmd-company-logo -->
-            </template>
-        </CmdSiteHeader>
-        <!-- end cmd-site-header -->
+            <!-- begin cmd-site-header -->
+            <CmdSiteHeader
+                v-if="cmdSiteHeader"
+                :cmdMainNavigation="{navigationEntries: cmdSiteHeader.mainNavigationEntries}"
+                :closeOffcanvas="{ iconClass: 'icon-cancel', text: label('main_navigation.close_navigation'), showText: true}"
+                :navigationInline="cmdSiteHeader.navigationInline"
+                @offcanvas="offcanvasToggled"
+            >
+                <template v-slot:top-header>
+                    <!-- begin cmd-list-of-links (for top-header-navigation) -->
+                    <CmdListOfLinks
+                        v-if="cmdSiteHeader.topHeaderNavigationEntries"
+                        :links="cmdSiteHeader.topHeaderNavigationEntries"
+                        orientation="horizontal"
+                        align="right"
+                    />
+                    <!-- end cmd-list-of-links (for top-header-navigation) -->
+                </template>
+                <template v-slot:logo>
+                    <!-- begin cmd-company-logo -->
+                    <CmdCompanyLogo
+                        v-if="cmdSiteHeader.cmdCompanyLogo?.pathDefaultLogo"
+                        :altText="cmdSiteHeader.cmdCompanyLogo?.altText"
+                        :pathDefaultLogo="cmdSiteHeader.cmdCompanyLogo?.pathDefaultLogo"
+                        :pathDarkmodeLogo="cmdSiteHeader.cmdCompanyLogo?.pathDarkmodeLogo"
+                    />
+                    <!-- end cmd-company-logo -->
+                </template>
+            </CmdSiteHeader>
+            <!-- end cmd-site-header -->
 
-        <!-- begin main-content -->
-        <main id="content">
             <!-- begin slot top-content -->
             <slot name="top-content"></slot>
             <!-- end slot top-content -->
+        </div>
+        <!-- end hero-section-wrapper -->
 
+        <!-- begin main-content -->
+        <main id="content">
             <CmdWidthLimitationWrapper v-if="aside?.leftColumn?.show || aside?.rightColumn?.show" :innerClass="['inner-content-wrapper', {'full-width': useFullWidth}]">
                 <!-- begin left column -->
                 <aside v-if="aside?.leftColumn?.show" class="left-column">
@@ -109,20 +113,45 @@
         <!-- begin cmd-site-footer -->
         <CmdSiteFooter v-if="cmdSiteFooter">
             <!-- begin parent-component -->
-            <component
-                v-for="(component, index) in cmdSiteFooter.components || []" :key="index"
-                :is="component.name"
-                v-bind="component.props"
-            >
-                <!-- begin child-component -->
+            <template v-if="editMode">
+                <EditComponentWrapper
+                    v-for="(component, componentIndex) in cmdSiteFooter.components || []"
+                    :key="componentIndex"
+                    :allow-add-component="component.allowAddComponent"
+                    :componentName="component.name"
+                    :componentProps="component.props"
+                    :componentPath="componentPath(componentIndex)">
+                    <component
+                        :is="component.name"
+                        v-bind="component.props"
+                    >
+                        <!-- begin child-component -->
+                        <component
+                            v-for="(childComponent, childComponentIndex) in component.components || []"
+                            :key="childComponentIndex" :is="childComponent.name"
+                            v-bind="childComponent.props"
+                            :editContent="childComponent.editContent"
+                        />
+                        <!-- end child-component -->
+                    </component>
+                </EditComponentWrapper>
+            </template>
+            <template v-else>
                 <component
-                    v-for="(childComponent, childComponentIndex) in component.components || []"
-                    :key="childComponentIndex" :is="childComponent.name"
-                    v-bind="childComponent.props"
-                    :editContent="childComponent.editContent"
-                />
-                <!-- end child-component -->
-            </component>
+                    v-for="(component, index) in cmdSiteFooter.components || []" :key="index"
+                    :is="component.name"
+                    v-bind="component.props"
+                >
+                    <!-- begin child-component -->
+                    <component
+                        v-for="(childComponent, childComponentIndex) in component.components || []"
+                        :key="childComponentIndex" :is="childComponent.name"
+                        v-bind="childComponent.props"
+                        :editContent="childComponent.editContent"
+                    />
+                    <!-- end child-component -->
+                </component>
+            </template>
             <!-- end parent-component -->
         </CmdSiteFooter>
         <!-- end cmd-site-footer -->
@@ -177,11 +206,11 @@
 
 // import store
 import {useWebUIStore} from "../stores/web-ui"
+import {usePiniaStore} from "../stores/pinia"
 
 // import mixins
 import BaseI18nComponent from "../components/mixins/BaseI18nComponent"
 import {mapState} from "pinia";
-import {usePiniaStore} from "../stores/pinia";
 
 export default {
     name: "PageWrapper",
@@ -248,8 +277,12 @@ export default {
             resizeObserver.observe(siteHeader[0])
         }
     },
+    updated() {
+        this.setupIntersectionObserver()
+    },
     computed: {
         ...mapState(useWebUIStore, ["template", "currentLanguageData", "activeSections"]),
+        ...mapState(usePiniaStore, ["editMode"]),
         templateId() {
             return "template-" + this.template
         },
@@ -261,6 +294,38 @@ export default {
         }
     },
     methods: {
+        setupIntersectionObserver() {
+            this.$nextTick(() => {
+                const sectionProvider = () => document.querySelectorAll("#content .cmd-width-limitation-wrapper > section:not(:has(.cmd-page-header))")
+                if (this.$_intersectionObserver) {
+                    this.$_intersectionObserver.disconnect()
+                    this.$_intersectionObserver = null
+                }
+                const options = {
+                    root: document.getElementById("page-wrapper"),
+                    threshold: 0.1
+                }
+                this.$_intersectionObserver = new IntersectionObserver(entries => {
+                    entries.filter(entry => entry.isIntersecting).forEach(entry => {
+                        entry.target.classList.add("visible")
+                    } )
+                }, options)
+                setTimeout(() => sectionProvider().forEach(element => this.$_intersectionObserver.observe(element)), 500)
+            })
+        },
+        componentPath(componentIndex) {
+            return [
+                "siteFooter",
+                "components",
+                componentIndex
+            ]
+        },
+        childComponentPath(componentIndex) {
+            return [
+                "components",
+                componentIndex
+            ]
+        },
         label(labelText) {
             // get label for current language (or show labelText-string)
             return this.currentLanguageData[labelText] ?? labelText
@@ -279,23 +344,7 @@ export default {
     watch: {
         activeSections: {
             handler() {
-                this.$nextTick(() => {
-                    const sectionProvider = () => document.querySelectorAll("#content .cmd-width-limitation-wrapper > section:not(:has(.cmd-page-header))")
-                    if (this.$_intersectionObserver) {
-                        this.$_intersectionObserver.disconnect()
-                        this.$_intersectionObserver = null
-                    }
-                    const options = {
-                        root: document.getElementById("page-wrapper"),
-                        threshold: 0.1
-                    }
-                    this.$_intersectionObserver = new IntersectionObserver(entries => {
-                        entries.filter(entry => entry.isIntersecting).forEach(entry => {
-                            entry.target.classList.add("visible")
-                        } )
-                    }, options)
-                    setTimeout(() => sectionProvider().forEach(element => this.$_intersectionObserver.observe(element)), 500)
-                })
+                this.setupIntersectionObserver()
             },
             immediate: true
         }

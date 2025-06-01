@@ -1,6 +1,7 @@
 import {defineStore} from "pinia"
 import axios from "axios"
 import {nextTick} from "vue"
+import {findComponent} from "./pinia.js"
 
 function findPageById(pages, id, parents) {
     for (let i = 0; i < pages.length; i++) {
@@ -20,7 +21,7 @@ function findPageById(pages, id, parents) {
     return null
 }
 
-export const useWebUIStore = defineStore("cms", {
+export const useWebUIStore = defineStore("webUiStore", {
     state: () => ({
         template: "blank",
         languages: [],
@@ -38,8 +39,8 @@ export const useWebUIStore = defineStore("cms", {
         routeMetaData: {}
     }),
     getters: {
-        topContentActiveSections() {
-            return this.currentPageContent?.topContent?.sections?.filter(section => section.show !== false) || []
+        heroSectionActiveSections() {
+            return this.currentPageContent?.heroSection?.sections?.filter(section => section.show !== false) || []
         },
         pageHeadlineText() {
             return this.currentPageContent?.mainContent?.pageHeadlineText
@@ -262,6 +263,71 @@ export const useWebUIStore = defineStore("cms", {
         }
     },
     actions: {
+        deleteContent(componentPath) {
+              if(componentPath?.length > 1 && componentPath[0] === "siteFooter") {
+                  const result = findComponent(this.siteFooter, componentPath.slice(1))
+                  // check if component parent is array
+                  if (Array.isArray(result.parent) && result.nodeIndex != null) {
+                      // delete entry from array
+                      result.parent.splice(result.nodeIndex, 1)
+                  }
+              }
+        },
+        updateContent(componentPath, updateHandlers) {
+            console.log("componentPath", componentPath)
+            console.log("updateHandlers", updateHandlers)
+            if(componentPath?.length > 1) {
+                let isSiteFooterUpdate = componentPath[0] === "siteFooter";
+                const data = isSiteFooterUpdate ? this.siteFooter : this.sections
+                const component = findComponent(data, isSiteFooterUpdate ? componentPath.slice(1) : componentPath)?.node
+
+                console.log("component", component)
+
+                if (!component || !Array.isArray(updateHandlers) || updateHandlers.length === 0) {
+                    return
+                }
+                const childUpdateHandlers = []
+                if (updateHandlers.length > 1) {
+                    childUpdateHandlers.push(...updateHandlers.slice(1))
+                }
+                const updateHandler = updateHandlers[0].update
+                if (typeof updateHandler === "function") {
+                    updateHandler(component.props || component, childUpdateHandlers)
+                }
+            }
+            // if(componentPath?.length > 1 && componentPath[0] === "siteFooter") {
+            //     const component = findComponent(this.siteFooter, componentPath.slice(1))?.node
+            //
+            //     if (!component || !Array.isArray(updateHandlers) || updateHandlers.length === 0) {
+            //         return
+            //     }
+            //     const childUpdateHandlers = []
+            //     if (updateHandlers.length > 1) {
+            //         childUpdateHandlers.push(...updateHandlers.slice(1))
+            //     }
+            //     const updateHandler = updateHandlers[0].update
+            //     if (typeof updateHandler === "function") {
+            //         updateHandler(component.props || component, childUpdateHandlers)
+            //     }
+            // }
+        },
+        addContent(componentPath, addHandler, componentPosition) {
+            if(componentPath?.length > 1 && componentPath[0] === "siteFooter") {
+                const result = findComponent(this.siteFooter, componentPath.slice(1))
+
+                // add new component-entry
+                if (Array.isArray(result.parent) && result.nodeIndex != null) {
+                    let position = 1 // default adds '1' to nodeIndex to insert new component after existing one
+
+                    if (componentPosition === 'before') {
+                        // set position to '0' to not raise nodeIndex and insert new component before existing one
+                        position = 0
+                    }
+                    // insert new component
+                    result.parent.splice(result.nodeIndex + position, 0, addHandler.item())
+                }
+            }
+        },
         scrollToAnchor(hash) {
             if (hash) {
                 nextTick(() => {
@@ -272,7 +338,7 @@ export const useWebUIStore = defineStore("cms", {
             } else {
 
                 // go to top if no has is provided (to reset scroll-position)
-                document.querySelector(".page-wrapper").scrollTo({top: 0, behavior: "instant"})
+                document.querySelector(".page-wrapper")?.scrollTo({top: 0, behavior: "instant"})
             }
         },
         setTemplate(template) {

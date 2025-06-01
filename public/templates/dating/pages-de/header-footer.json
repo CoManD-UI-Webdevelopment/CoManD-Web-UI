@@ -57,7 +57,7 @@
                   "icon": {
                     "iconClass": "icon-questionmark"
                   },
-                  "linkType": "router",
+                  "linkType": "href",
                   "text": "Faq (with anchor)",
                   "path": {
                     "name": "faq",
@@ -90,6 +90,7 @@
       {
         "name": "CmdSwitchLanguage",
         "props": {
+          "pathFlags": "https://comand-ui.com/samples/images/flags",
           "languages": [
             {
               "iso2": "de",

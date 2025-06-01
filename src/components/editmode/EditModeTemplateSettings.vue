@@ -81,7 +81,7 @@ export default {
             if (this.selectedTemplate !== "blank") {
                 let newLink = document.createElement("link")
                 newLink.rel = "stylesheet"
-                newLink.href = "https://cdn.jsdelivr.net/npm/comand-frontend-framework/dist/templates/" + this.selectedTemplate + ".css"
+                newLink.href = "../node_modules/comand-frontend-framework/dist/templates/" + this.selectedTemplate + ".css"
 
                 document.head.appendChild(newLink)
             }

@@ -8,15 +8,15 @@
 
 html {
     --default-font-family: "mondaregular", sans-serif !important;
-    --box-header-background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(240,240,240,1) 100%);
+    --box-header-background: light-dark(linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(240,240,240,1) 100%), linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(15,15,15,1) 100%));
     --box-header-text-color: var(--primary-color);
     --section-padding-top: calc(var(--default-padding) * 4) !important;
     --section-padding-bottom: calc(var(--default-padding) * 4) !important;
     --background-blur: blur(.7rem);
-    --background-low-transparency: rgba(255, 255, 255, .75);
-    --background-high-transparency: rgba(255, 255, 255, .4);
+    --background-low-transparency: light-dark(hsl(from var(--color-white) h s l / .75)  , hsl(from var(--color-black) h s l / .75));
+    --background-high-transparency: light-dark(hsl(from var(--color-white) h s l / .4)  hsl(from var(--color-black) h s l / .2));
     --fieldset-background: var(--background-high-transparency);
-    --site-footer-hyperlink-color: var(--default-text-color);
+    --site-footer-hyperlink-color: light-dark(var(--default-text-color), var(--color-white));
     --site-footer-hyperlink-color-highlighted: var(--primary-color);
 }
 
@@ -40,32 +40,38 @@ button, .button {
     transition: all linear .5s;
 }
 
-.site-header header .main-navigation-wrapper {
-    nav {
-        --nav-border-radius: 2rem;
-        background: var(--secondary-color);
-        border-radius: var(--nav-border-radius);
+.site-header {
+    background: var(--background-low-transparency);
+    border: 0;
 
-        > ul {
-            background: none;
+    header .main-navigation-wrapper {
+        nav {
+            --nav-border-radius: 2rem;
+            background: var(--secondary-color);
+            filter: blur(--background-blur);
+            border-radius: var(--nav-border-radius);
 
-            > li {
-                &:first-child a {
-                    border-top-left-radius: var(--nav-border-radius);
-                    border-bottom-left-radius: var(--nav-border-radius);
-                }
+            > ul {
+                background: none;
 
-                &:last-child a {
-                    border-top-right-radius: var(--nav-border-radius);
-                    border-bottom-right-radius: var(--nav-border-radius);
-                }
+                > li {
+                    &:first-child a {
+                        border-top-left-radius: var(--nav-border-radius);
+                        border-bottom-left-radius: var(--nav-border-radius);
+                    }
 
-                > a {
-                    padding-top: .5rem;
-                    padding-bottom: .5rem;
+                    &:last-child a {
+                        border-top-right-radius: var(--nav-border-radius);
+                        border-bottom-right-radius: var(--nav-border-radius);
+                    }
 
-                    span {
-                        color: var(--pure-white);
+                    > a {
+                        padding-top: .5rem;
+                        padding-bottom: .5rem;
+
+                        span {
+                            color: var(--color-white);
+                        }
                     }
                 }
             }
@@ -73,11 +79,13 @@ button, .button {
     }
 }
 
-#welcome {
-    background: url("/public/media/images/content-images/couple.jpg") no-repeat;
+.hero-section-wrapper {
+    height: 100dvh;
+    background: url("/public/media/images/content-images/couple.jpg") no-repeat top center;
     background-size: cover;
-    height: 95dvh;
+}
 
+[id$="welcome"] {
     .cmd-tabs {
         background: none;
 
@@ -124,7 +132,7 @@ button, .button {
     }
 }
 
-#new-members {
+#anchor-new-members {
     > section {
         & > * {
             min-width: 30rem;
@@ -257,21 +265,27 @@ html.dark-mode {
         }
     }
 
-    #welcome {
-        & section {
-            & #top-container {
+    [id$="welcome"] {
+        section {
+            #top-container {
                 width: 80%;
                 margin: 0 auto;
             }
+        }
+    }
+
+    .site-footer {
+        .cmd-list-of-links {
+            margin-bottom: calc(var(--default-margin) * 2);
         }
     }
 }
 
 /* begin css for dark-mode only ------------------------------------------------------------------------------------------ */
 @media only screen and (max-width: 600px) {
-    #welcome {
-        & section {
-            & #top-container {
+    [id$="welcome"] {
+        section {
+            #top-container {
                 width: 100%;
             }
         }
@@ -296,19 +310,6 @@ html.dark-mode {
 }
 
 @media (prefers-color-scheme: dark) {
-    --background-low-transparency: rgba(0, 0, 0, .75);
-    --background-high-transparency: rgba(0, 0, 0, .2);
     --background-login-form: var(--fieldset-background);
-    --box-header-background: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(15,15,15,1) 100%);
-    --site-footer-hyperlink-color: var(--pure-white);
-    --site-footer-text-decoration-color-highlighted: var(--primary-color);
-}
-
-html.dark-mode {
-    --background-low-transparency: rgba(0, 0, 0, .75);
-    --background-high-transparency: rgba(0, 0, 0, .2);
-    --background-login-form: var(--fieldset-background);
-    --box-header-background: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(15,15,15,1) 100%);
-    --site-footer-hyperlink-color: var(--pure-white);
     --site-footer-text-decoration-color-highlighted: var(--primary-color);
 }

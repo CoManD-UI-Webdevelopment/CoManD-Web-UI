@@ -52,7 +52,7 @@
                 {
                   "type": "href",
                   "text": "External link",
-                  "path": "http://www.comand-cms.com",
+                  "path": "https://www.comand-ui.com",
                   "target": "_blank",
                   "icon": {
                     "iconClass": "icon-export",

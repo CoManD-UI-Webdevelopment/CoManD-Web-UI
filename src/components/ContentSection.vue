@@ -8,7 +8,7 @@
         :useFullDeviceWidth="useFullDeviceWidth"
         :contentOrientation="contentOrientation"
     >
-        <RenderComponents :components="components" />
+        <RenderComponents :section-id="id" :components="components" />
     </CmdWidthLimitationWrapper>
 </template>
 
