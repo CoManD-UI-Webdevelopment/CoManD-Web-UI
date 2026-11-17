@@ -17,7 +17,7 @@
 
 /* ---------------------------------------------- BEGIN BASIC STRUCTURE -------------------------------------------------- */
 /* begin page-structure --------------------------------------------------------------------------------------------------------------------------------------------------- */
-html {
+:root {
     --section-padding-top: calc(var(--default-padding) * 6);
     --section-padding-bottom: calc(var(--default-padding) * 6);
 }
@@ -29,11 +29,11 @@ body {
     }
 }
 
-body, .page-wrapper {
+body, .site-wrapper {
     background: var(--color-scheme-background);
 }
 
-.page-wrapper main {
+.site-wrapper main {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
@@ -56,7 +56,7 @@ body, .page-wrapper {
 }
 
 .cmd-tooltip {
-    box-shadow: .1rem .3rem .3rem var(--dark-gray);
+    box-shadow: .1rem .3rem .3rem var(--color-dark-gray);
 }
 
 .cmd-width-limitation-wrapper section:has(.cmd-breadcrumbs) {
@@ -79,7 +79,7 @@ main {
 
         /*
         &:nth-child(even) {
-            background: var(--default-background);
+            background: var(--color-scheme-background-subtle);
         }*/
 
         &.page-header-section, &.page-footer-section {
@@ -145,7 +145,7 @@ main {
         }
 
         &:nth-child(even) {
-            background: var(--default-background);
+            background: var(--color-scheme-background-subtle);
         }
     }
 }

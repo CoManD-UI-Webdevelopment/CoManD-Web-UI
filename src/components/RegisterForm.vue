@@ -1,6 +1,6 @@
 <template>
     <CmdForm v-bind="cmdForm">
-        <CmdHeadline :headlineText="getMessage('register_form.headline.find_a_soul_mate')" headlineLevel="3" />
+        <CmdHeadline :headlineText="getMessage('register_form.headline.find_a_soul_mate')" headlineLevel="3" textAlign="center" />
         <div class="flex-container">
             <CmdFormElement
                 element="select"
@@ -68,11 +68,11 @@ export default {
             genderB: "f",
             selectOptionsGender: [
                 {
-                    text: "Male",
+                    text: this.getMessage("register_form.selectoption.male"),
                     value: "m"
                 },
                 {
-                    text: "Female",
+                    text: this.getMessage("register_form.selectoption.female"),
                     value: "f"
                 }
             ]
@@ -87,7 +87,7 @@ export default {
                         show: false,
                         text: "Register and login"
                     },
-                    submitButton: {
+                    cmdLinkSubmitButton: {
                         text: "Search for partners now",
                         position: "insideFieldset",
                         type: "button",

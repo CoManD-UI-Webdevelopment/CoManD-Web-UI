@@ -23,7 +23,8 @@ function findPageById(pages, id, parents) {
 
 export const useWebUIStore = defineStore("webUiStore", {
     state: () => ({
-        template: "blank",
+        template: "blank", // look and feel (name of a framework-template: blank, material-web, neumorphic, tailwind)
+        contentFolder: "blank", // folder in /templates/ that contains the page-content (pages-<language>/*.json), falls back to "blank"
         languages: [],
         languageData: {},
         defaultMetaData: {},
@@ -58,9 +59,11 @@ export const useWebUIStore = defineStore("webUiStore", {
             return this.currentPageContent?.mainContent?.aside?.rightColumn?.components || []
         },
         mainNavigationEntries(state) {
+            // onePager
             if (state.pages.length === 1) {
                 return this.sectionEntries
             }
+            // multi-page
             return this.pageEntries
         },
         /**
@@ -98,13 +101,17 @@ export const useWebUIStore = defineStore("webUiStore", {
             // create deep-copy of pageFooterContent from state
             const pageFooterContent = JSON.parse(JSON.stringify(this.pageFooterContent))
 
-            if (pageFooterContent.buttonPrintView?.show) {
-                pageFooterContent.buttonPrintView.text = this.currentLanguageData[pageFooterContent.buttonPrintView.text] ?? pageFooterContent.buttonPrintView.text
+            const buttonPrintViewText = pageFooterContent.cmdLinkPrintView
+
+            if (buttonPrintViewText?.show) {
+                buttonPrintViewText.text = this.currentLanguageData[buttonPrintViewText.text] ?? buttonPrintViewText.text
             }
 
-            if (pageFooterContent.cmdSocialNetworks.cmdFormElement) {
+            const dataPrivacyLabelText = pageFooterContent.cmdSocialNetworks.cmdFormElementDataPrivacy
+
+            if (dataPrivacyLabelText) {
             // assign key from site.json to translate label-text
-                pageFooterContent.cmdSocialNetworks.cmdFormElement.labelText = this.currentLanguageData[pageFooterContent.cmdSocialNetworks.cmdFormElement.labelText]
+            dataPrivacyLabelText.labelText = this.currentLanguageData[dataPrivacyLabelText.labelText]
             }
 
             pageFooterContent.cmdSocialNetworks.networks?.forEach((item) => {
@@ -191,14 +198,11 @@ export const useWebUIStore = defineStore("webUiStore", {
         showSiteFooter(state) {
             return state.siteStructure.includes("siteFooter")
         },
-        companyLogo(state) {
-            return state.siteHeader?.props?.cmdCompanyLogo || {}
-        },
         metaData(state) {
             return {
                 title: state.routeMetaData?.title || findPageById(state.pages, state.currentPageName)?.navEntry,
                 ...state.defaultMetaData,
-                ...(this.currentPageContent?.metadata || {})
+                ...(this.currentPageContent?.metadata || {}) // load meta-data from json
             }
         },
         currentPage(state) {
@@ -214,8 +218,8 @@ export const useWebUIStore = defineStore("webUiStore", {
                     iconClass: section.iconClass,
                     text: section.navEntry,
                     path: "#anchor-" + section.id,
-                    type: "href",
-                    active: location.hash === "#anchor-" + section.id
+                    type: "href"
+                    // active: location.hash === "#anchor-" + section.id
                 }))
         },
         pageEntries(state) {
@@ -337,12 +341,33 @@ export const useWebUIStore = defineStore("webUiStore", {
                 })
             } else {
 
-                // go to top if no has is provided (to reset scroll-position)
-                document.querySelector(".page-wrapper")?.scrollTo({top: 0, behavior: "instant"})
+                // go to top if no hash is provided (to reset scroll-position)
+                document.querySelector(".site-wrapper")?.scrollTo({top: 0, behavior: "instant"})
             }
         },
-        setTemplate(template) {
+        setTemplate(template, contentFolder) {
             this.template = template
+            this.contentFolder = contentFolder || template
+        },
+        /**
+         * load a json-file with page-content (<contentFolder>/pages-<language>/<file>.json).
+         * Templates are looks only, so if the content-folder (or the file) does not exist, the content of "blank" is used.
+         *
+         * @returns {Promise<Object|null>}
+         */
+        async fetchPageJson(file) {
+            for (const folder of [...new Set([this.contentFolder, "blank"])]) {
+                try {
+                    const response = await axios(new URL(`/templates/${folder}/pages-${this.currentLanguage}/${file}.json`, location.href).href)
+                    // a dev-server may answer missing files with the index.html (status 200) => accept json-objects only
+                    if (response.data && typeof response.data === "object") {
+                        return response.data
+                    }
+                } catch {
+                    // try next folder
+                }
+            }
+            return null
         },
         setLanguages(languages) {
             this.languages = languages || []
@@ -364,12 +389,10 @@ export const useWebUIStore = defineStore("webUiStore", {
             if (!this.pageContent[this.currentLanguage]) {
                 this.pageContent[this.currentLanguage] = {}
             }
-            const url = new URL(`/templates/${this.template}/pages-${this.currentLanguage}/header-footer.json`, location.href)
-            axios(url.href)
-                .then(response => response.data)
+            this.fetchPageJson("header-footer")
                 .then(structure => {
-                    this.siteHeader = structure.siteHeader || {}
-                    this.siteFooter = structure.siteFooter || {}
+                    this.siteHeader = structure?.siteHeader || {}
+                    this.siteFooter = structure?.siteFooter || {}
                     // this.pageContent[this.currentLanguage]["header-footer"] = true
                 })
         },
@@ -391,11 +414,15 @@ export const useWebUIStore = defineStore("webUiStore", {
             if (!this.pageContent[this.currentLanguage]) {
                 this.pageContent[this.currentLanguage] = {}
             }
-            const url = new URL(`/templates/${this.template}/pages-${this.currentLanguage}/${name}.json`, location.href)
-            axios(url.href)
-                .then(response => response.data)
+
+            // load data from json for this page/section
+            const language = this.currentLanguage
+            this.fetchPageJson(name)
                 .then(pageContent => {
-                    this.pageContent[this.currentLanguage][name] = pageContent
+                    if (!pageContent) {
+                        return
+                    }
+                    this.pageContent[language][name] = pageContent
                     this.scrollToAnchor(hash)
                 })
         },

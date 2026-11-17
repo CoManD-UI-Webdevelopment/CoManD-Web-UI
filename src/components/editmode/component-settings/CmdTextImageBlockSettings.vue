@@ -61,15 +61,15 @@ export default {
             type: Object,
             required: false
         },
-        paragraphTextAlign: {
-            type: String,
-            default: "left"
+        cmdParagraph: {
+            type: Object,
+            required: false
         }
     },
     computed: {
         paragraphTextAlignModel: {
             get() {
-                return this.editableParagraphTextAlign == null ? this.paragraphTextAlign : this.editableParagraphTextAlign
+                return this.editableParagraphTextAlign == null ? (this.cmdParagraph?.textAlign || "left") : this.editableParagraphTextAlign
             },
             set(value) {
                 this.editableParagraphTextAlign = value
@@ -90,7 +90,7 @@ export default {
                     props.cmdImage = {}
                 }
                 imageUpdateCallback(props.cmdImage)
-                props.paragraphTextAlign = paragraphTextAlign
+                props.cmdParagraph = {...props.cmdParagraph, textAlign: paragraphTextAlign}
             }
         }
     }

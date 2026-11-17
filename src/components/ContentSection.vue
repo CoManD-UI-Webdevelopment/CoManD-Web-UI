@@ -3,7 +3,7 @@
         :class="htmlClasses"
         :id="numberOfPages > 1 ? id : 'anchor-' + id"
         :cmdHeadline="cmdHeadline"
-        :contentType="contentType"
+        :containerType="containerType"
         :useInnerSection="useInnerSection"
         :useFullDeviceWidth="useFullDeviceWidth"
         :contentOrientation="contentOrientation"
@@ -58,7 +58,7 @@ export default {
         allowAddComponent: {
             type: Boolean
         },
-        contentType: {
+        containerType: {
             type: String
         }
     },

@@ -1,5 +1,5 @@
 {
-  "template": "dating",
+  "template": "material-web",
   "languages": [
     "de",
     "en"
@@ -91,7 +91,7 @@
       }
     }
   },
-  "pages": [
+  "pagesx": [
     {
       "id": "homepage",
       "iconClass": "icon-home",
@@ -101,7 +101,7 @@
       ]
     }
   ],
-  "pagesx": [
+  "pages": [
     {
       "id": "homepage",
       "iconClass": "icon-home",
@@ -112,7 +112,7 @@
     },
     {
       "id": "about-us",
-      "navEntry": "About us",
+      "navEntry": "main_navigation.menuentry.about_us",
       "subEntries": [
         {
           "id": "subpage1",
@@ -166,15 +166,17 @@
     }
   ],
   "pageFooter": {
-    "buttonPrintView": {
-      "show": true,
-      "text": "page_footer.text.button_print_preview"
+    "cmdLinkPrintView": {
+        "show": true,
+        "linkType": "button",
+        "text": "page_footer.text.button_print_preview"
     },
     "cmdSocialNetworks": {
-      "cmdFormElement": {
+      "cmdFormElementDataPrivacy": {
         "toggleSwitch": true,
         "labelText": "social_networks.labeltext.accept_privacy",
         "required": true
+
       },
       "networks": [
         {

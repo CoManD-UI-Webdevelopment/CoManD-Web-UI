@@ -456,7 +456,7 @@ export default {
 <style>
 #edit-mode-settings-sidebar {
     justify-content: space-between;
-    background: var(--default-background);
+    background: var(--color-scheme-background-subtle);
     position: fixed;
     padding: 0;
     top: 0;
@@ -579,7 +579,7 @@ export default {
             a {
                 display: flex;
                 flex-direction: column;
-                gap: var(--default-gap-half);
+                gap: var(--gap-small);
                 align-items: center;
                 text-align: center;
                 font-size: small;
@@ -600,7 +600,7 @@ export default {
                         left: 50%;
                         z-index: 2;
                         transform: translate(-50%, -50%);
-                        color: var(--pure-white);
+                        color: var(--color-white);
                     }
                 }
 

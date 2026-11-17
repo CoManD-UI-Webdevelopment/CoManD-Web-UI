@@ -1,15 +1,16 @@
 {
   "siteHeader": {
-    "navigationInline": true,
     "props": {
+      "navigationInline": true,
+      "resizeHeaderOnScroll": true,  
       "cmdCompanyLogo": {
         "pathDefaultLogo": "/media/images/logos/logo-dating.svg",
         "altText": "Company Logo"
       },
       "cmdMainNavigation": {
-        "closeOffcanvas": {
+        "buttonOffcanvas": {
           "iconClass": "icon-cancel",
-          "text": "Close navigation",
+          "text": "Close navigation2",
           "showText": false
         }
       }
@@ -26,7 +27,7 @@
         },
         "components": [
           {
-            "name": "CmdListOfLinks",
+            "name": "CmdList",
             "handlers": "toggleSection",
             "props": {
               "cmdHeadline": {

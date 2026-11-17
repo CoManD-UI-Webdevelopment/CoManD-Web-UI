@@ -1,92 +1,61 @@
 <template>
-    <PageWrapper
-        :aside="aside"
-         :cmdSiteHeader="cmdSiteHeader"
-         :cmdSiteFooter="siteFooter"
-         :cmdPageHeader="pageHeader"
-         :cmdPageFooter="pageFooter"
-         :pageHeadlineText="pageHeadlineText"
+    <CmdSiteWrapper 
+        :aside="aside" 
+        :cmdSiteHeader="cmdSiteHeaderProperties" 
+        :cmdSiteFooter="siteFooter" 
+        :cmdPageHeader="pageHeader"
+        :cmdPageFooter="pageFooter"
+        :useHeroSection="heroSectionActiveSections.length > 0"
     >
-        <template v-slot:top-content>
-            <ContentSection
-                v-for="(section, index) in heroSectionActiveSections"
-                :key="index"
-                :id="section.id"
-                :cmdHeadline="section.cmdHeadline"
-                :components="section.components"
-                :innerClass="section.innerClass"
-                :contentType="section.contentType"
-                :contentOrientation="section.contentOrientation"
-                :useFullDeviceWidth="section.useFullDeviceWidth"
-            >
+        <template v-slot:hero-section-content>
+            <ContentSection v-for="(section, index) in heroSectionActiveSections" :key="index" :id="section.id"
+                :cmdHeadline="section.cmdHeadline" :components="section.components" :innerClass="section.innerClass"
+                :contentType="section.contentType" :contentOrientation="section.contentOrientation"
+                :useFullDeviceWidth="section.useFullDeviceWidth">
             </ContentSection>
         </template>
         <template v-slot:left-column>
-            <component
-                v-for="(component, componentIndex) in asideLeftColumnContent"
-                :key="componentIndex"
-                :is="component.name"
-                v-bind="component.props"
-                :i18n="currentLanguageData"
-            >
-                <component
-                    v-for="(childComponent, childComponentIndex) in component.components || []"
-                    :is="childComponent.name"
-                    :key="childComponentIndex"
-                    v-bind="childComponent.props"
-                    :i18n="currentLanguageData"
-                />
+            <component v-if="aside.leftColumn.show" v-for="(component, componentIndex) in asideLeftColumnContent" :key="componentIndex"
+                :is="component.name" v-bind="component.props">
+                <component v-for="(childComponent, childComponentIndex) in component.components || []"
+                    :is="childComponent.name" :key="childComponentIndex" v-bind="childComponent.props" />
             </component>
         </template>
-        <router-view></router-view>
+        <template v-slot:page-content>
+            <router-view></router-view>
+        </template>
         <template v-slot:right-column>
-            <component
-                v-for="(component, componentIndex) in asideRightColumnContent"
-                :key="componentIndex"
-                :is="component.name"
-                v-bind="component.props"
-                :i18n="currentLanguageData"
-            >
-                <component
-                    v-for="(childComponent, childComponentIndex) in component.components || []"
-                    :is="childComponent.name"
-                    :key="childComponentIndex"
-                    v-bind="childComponent.props"
-                    :i18n="currentLanguageData"
-                />
+            <component v-for="(component, componentIndex) in asideRightColumnContent" :key="componentIndex"
+                :is="component.name" v-bind="component.props">
+                <component v-for="(childComponent, childComponentIndex) in component.components || []"
+                    :is="childComponent.name" :key="childComponentIndex" v-bind="childComponent.props" />
             </component>
         </template>
 
         <!-- begin CmdFancyBox with CmdCookieDisclaimer -->
-        <CmdFancyBox
-            v-if="cookieDisclaimer.useCookieDisclaimer"
-            :show="showCookieDisclaimer()"
-            :allowEscapeKey="false"
-            :fancyBoxOptions="{ 'closeIcon': { show: false }}"
-            ariaLabelText="Cookie Disclaimer">
-            <CmdCookieDisclaimer
-                :i18n="currentLanguageData"
-                v-bind="cookieDisclaimer"
+        <CmdFancyBox v-if="cookieDisclaimer.useCookieDisclaimer" :show="showCookieDisclaimer()" :allowEscapeKey="false"
+            :fancyBoxOptions="{ 'closeIcon': { show: false } }" ariaLabelText="Cookie Disclaimer">
+            <CmdCookieDisclaimer v-bind="cookieDisclaimer"
                 @close-cookie-disclaimer="setCookies" />
         </CmdFancyBox>
         <!-- end CmdFancyBox with CmdCookieDisclaimer -->
-    </PageWrapper>
+    </CmdSiteWrapper>
 </template>
 
 <script>
 // import components from comand-component-library
-import {createUuid, openFancyBox} from 'comand-component-library'
+import { createUuid, openFancyBox } from 'comand-component-library'
 
 // import functions
-import {mapActions, mapState} from "pinia"
-import {usePiniaStore} from "../stores/pinia"
-import {useWebUIStore} from "../stores/web-ui"
-import {setCookieDisclaimerCookie, getCookieDisclaimerCookie} from "comand-component-library"
+import { mapActions, mapState } from "pinia"
+import { usePiniaStore } from "../stores/pinia"
+import { useWebUIStore } from "../stores/web-ui"
+import { setCookieDisclaimerCookie, getCookieDisclaimerCookie } from "comand-component-library"
 
 // import mixins
 import BaseI18nComponent from "../components/mixins/BaseI18nComponent"
-import {useEditModeContext} from "../composables/editModeContext.js"
-import {computed, watch} from "vue"
+import { useEditModeContext } from "../composables/editModeContext.js"
+import { computed, watch } from "vue"
 
 export default {
     mixins: [
@@ -98,6 +67,18 @@ export default {
         }
     },
     props: {
+        CmdSiteHeader: {
+            type: Object
+        },
+        CmdSiteFooter: {
+            type: Object
+        },
+        CmdPageHeader: {
+            type: Object
+        },
+        CmdPageFooter: {
+            type: Object
+        },
         cookieDisclaimerData: {
             type: Object
         }
@@ -164,21 +145,26 @@ export default {
             "siteFooter",
             "pageFooter",
             "pageHeader",
-            "companyLogo",
             "metaData",
             "asideLeftColumnShow",
             "asideLeftColumnContent",
             "asideRightColumnShow",
             "asideRightColumnContent",
             "heroSectionActiveSections",
-            "pageHeadlineText",
             "cookieDisclaimer",
         ]),
-        cmdSiteHeader() {
+        cmdSiteHeaderProperties() {
             return {
                 navigationInline: !!this.siteHeader?.navigationInline,
-                cmdCompanyLogo: this.companyLogo,
-                mainNavigationEntries: this.mainNavigationEntries
+                ...this.siteHeader,
+                cmdMainNavigation: {
+                    ...this.siteHeader.cmdMainNavigation, // spread properties from header-json
+                    navigationEntries: this.mainNavigationEntries, // assign mainNvigationEntries form store-getter
+                    /*
+                    closeOffcanvas: {
+                        text: this.currentLanguageData["main_navigation.close_navigation"]
+                    }*/
+                }
             }
         },
         aside() {
@@ -199,7 +185,7 @@ export default {
 
             for (let i = 0; i < this.openingHoursData.length; i++) {
                 // copy/spread one weekday of openingHoursData to variable
-                const weekday = {...this.openingHoursData[i]}
+                const weekday = { ...this.openingHoursData[i] }
 
                 // assign label from BaseI18n (or the value set in json-file)
                 weekday.day = this.label('opening_hours.' + weekday.day, weekday.day)
@@ -261,7 +247,7 @@ export default {
         ...mapActions(usePiniaStore, ["loadLabels", "loadSite"]),
 
         openFancybox(event) {
-            openFancyBox({url: event.target.href})
+            openFancyBox({ url: event.target.href })
         },
         closeCookieDisclaimer() {
             this.fancyBoxCookieDisclaimer = false
@@ -274,7 +260,7 @@ export default {
     watch: {
         metaData: {
             handler() {
-                const metaNames = ["description","rating","robots","author"]
+                const metaNames = ["description", "rating", "robots", "author"]
                 document.head.querySelectorAll(metaNames.map(name => `meta[name="${name}"]`).join(","))
                     .forEach(element => element.remove())
                 if (this.metaData) {

@@ -1,17 +1,16 @@
 {
   "siteHeader": {
     "navigationInline": true,
-    "props": {
-      "cmdCompanyLogo": {
-        "pathDefaultLogo": "/media/images/logos/logo-dating.svg",
-        "altText": "Company Logo"
-      },
-      "cmdMainNavigation": {
-        "closeOffcanvas": {
-          "iconClass": "icon-cancel",
-          "text": "Navigation schließen",
-          "showText": false
-        }
+    "resizeHeaderOnScroll": true,
+    "cmdCompanyLogo": {
+      "pathDefaultLogo": "/media/images/logos/logo-dating.svg",
+      "altText": "Company Logo"
+    },
+    "cmdMainNavigation": {
+      "closeOffcanvas": {
+        "iconClass": "icon-home",
+        "text": "Navigation schließen",
+        "showText": true
       }
     }
   },
@@ -26,14 +25,13 @@
         },
         "components": [
           {
-            "name": "CmdListOfLinks",
+            "name": "CmdList",
             "handlers": "toggleSection",
             "props": {
-              "cmdHeadline": {
-              },
+              "cmdHeadline": {},
               "orientation": "vertical",
-              "textAlign": "right",
-              "links": [
+              "align": "right",
+              "items": [
                 {
                   "icon": {
                     "iconClass": "icon-security-settings"
@@ -57,7 +55,7 @@
                   "icon": {
                     "iconClass": "icon-questionmark"
                   },
-                  "linkType": "href",
+                  "linkType": "router",
                   "text": "Faq (with anchor)",
                   "path": {
                     "name": "faq",

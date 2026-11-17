@@ -3,13 +3,13 @@
 import "comand-component-library/css.js"
 
 /* import generated css from component-library-components */
-import "comand-component-library/style.css"
+import "comand-component-library/comand-component-library.css"
 /* end imports from comand-component-library ---------------------------------------------------------------------------------------- */
 
-/* end imports from comand-ui-website ---------------------------------------------------------------------------------------- */
+/* end imports from comand-webui ---------------------------------------------------------------------------------------- */
 /* import global css */
 import "./assets/styles/comand-web-ui-global-styles.scss"
 
 /* import css for editmode */
 import "./assets/styles/editmode.css"
-/* end imports from comand-ui-website ---------------------------------------------------------------------------------------- */
+/* end imports from comand-webui ---------------------------------------------------------------------------------------- */

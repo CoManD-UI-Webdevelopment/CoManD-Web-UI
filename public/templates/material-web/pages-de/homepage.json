@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "title": "CoManD-UI-Website: Dating-Template",
-    "description": "Short description for homepage",
+    "title": "CoManD WebUI: Material-Web-Template",
+    "description": "Kurzbeschreibung für Startseite",
     "rating": "",
     "robots": "index/follow",
     "author": ""
@@ -24,13 +24,13 @@
               "useDefaultPadding": false,
               "tabs": [
                 {
-                  "name": "Search now",
+                  "tooltip": "Jetzt suchen",
                   "headlineText": "Tab 1 Headline",
                   "headlineLevel": 4,
                   "iconClass": "icon-search"
                 },
                 {
-                  "name": "Login",
+                  "tooltip": "Anmelden",
                   "headlineText": "Tab 2 Headline",
                   "headlineLevel": 4,
                   "iconClass": "icon-logon"
@@ -49,8 +49,11 @@
                       "show": false,
                       "text": "Register"
                     },
-                    "submitButton": {
-                      "text": "Find a partner now"
+                    "cmdLinkCancelButton": {
+                      "show": false
+                    },
+                    "cmdLinkSubmitButton": {
+                      "text": "Jetzt Partner finden"
                     }
                   }
                 }
@@ -60,15 +63,24 @@
                 "slotName": "tab-content-1",
                 "props": {
                   "cmdHeadlineLoginForm": {
-                    "headlineText": "Register now and find a partner!",
-                    "headlineLevel": 3
+                    "headlineText": "Jetzt registrieren und Partner finden!",
+                    "headlineLevel": 3,
+                    "textAlign": "center"
                   },
                   "legendLoginForm": {
                     "show": false,
                     "text": "Login form"
                   },
-                  "orientation": "vertical",
-                  "options": {}
+                  "cmdLinkLogin": {
+                    "text": "Anmelden"
+                  },
+                  "cmdLinkForgotPassword": {
+                      "text": "Passwort vergessen"
+                  },
+                  "cmdLinkCreateAccount": {
+                    "text": "Jetzt registrieren"
+                  },
+                  "orientation": "vertical"
                 }
               }
             ]
@@ -82,7 +94,7 @@
       {
         "id": "new-members",
         "showLinkInMainNavigation": true,
-        "navEntry": "New Members",
+        "navEntry": "Neue Mitglieder",
         "iconClass": "icon-user-profile",
         "allowAddComponent": true,
         "contentType": "flex",
@@ -97,9 +109,10 @@
               "stretchVertically": true,
               "cmdHeadline": {
                 "headlineLevel": 4,
-                "headlineText": "Top 10 dating tips"
+                "headlineText": "Top 10 Dating-Tipps",
+                "textAlign": "center"
               },
-              "textBody": "Raise your chance of successful flirtiny with this 10 dating tips",
+              "textBody": "Erhöhen Sie Ihre Flirtchancen mit diesen 10 Datingtipps.",
               "cmdImage": {
                 "image": {
                   "src": "/media/images/content-images/couple2.jpg",
@@ -113,13 +126,14 @@
                   "iconClass": "icon-chevron-two-stripes-right",
                   "position": "right"
                 },
-                "text": "Read more"
+                "text": "Mehr erfahren"
               }
             }
           },
           {
             "name": "CmdContainer",
             "props": {
+              "id": "new-members-container",
               "containerType": "flex",
               "contentOrientation": "vertical"
             },
@@ -128,7 +142,7 @@
                 "name": "ThumbnailScrollerWrapper",
                 "props": {
                   "cmdHeadline": {
-                    "headlineText": "New male members",
+                    "headlineText": "Neue männliche Mitglieder",
                     "headlineLevel": 3,
                     "textAlign": "center"
                   },
@@ -139,7 +153,7 @@
                 "name": "ThumbnailScrollerWrapper",
                 "props": {
                   "cmdHeadline": {
-                    "headlineText": "New female members",
+                    "headlineText": "Neue weibliche Mitglieder",
                     "headlineLevel": 3,
                     "textAlign": "center"
                   },
@@ -160,8 +174,9 @@
         "iconClass": "icon-cogs",
         "allowAddComponent": true,
         "contentType": "flex",
+        "contentOrientation": "vertical",
         "cmdHeadline": {
-          "headlineText": "Our service for you",
+          "headlineText": "Unser Service für Sie",
           "headlineLevel": 2,
           "textAlign": "center"
         },
@@ -170,7 +185,7 @@
           {
             "name": "CmdBoxWrapper",
             "props": {
-              "allowAddComponent": false,
+              "allowAddComponent": true,
               "allowUserToToggleOrientation": false,
               "boxesPerRow": 3,
               "useFlexbox": true,
@@ -183,14 +198,14 @@
                   "stretchVertically": true,
                   "cmdHeadline": {
                     "headlineLevel": 3,
-                    "headlineText": "Verified profiles",
+                    "headlineText": "Verifizierte Profile",
                     "textAlign": "center"
                   },
                   "headlinePosition": "body",
                   "cmdIcon": {
                     "iconClass": "icon-check"
                   },
-                  "textBody": "We assure by precise algorithms and trained personnel the authenticity of all profiles on our platforms."
+                  "textBody": "Wir stellen technisch und durch geschulte Mitarbeiter sicher, dass alle Profile auf unserer Plattform echt und sind"
                 }
               },
               {
@@ -199,14 +214,14 @@
                   "stretchVertically": true,
                   "cmdHeadline": {
                     "headlineLevel": 3,
-                    "headlineText": "Find your soul-mate worldwide",
+                    "headlineText": "Finde Deinen Partner weltweit",
                     "textAlign": "center"
                   },
                   "headlinePosition": "body",
                   "cmdIcon": {
                     "iconClass": "icon-globe"
                   },
-                  "textBody": "We offer dating from people all over the world."
+                  "textBody": "Wir bieten weltweite Partnersuche in über 100 Ländern."
                 }
               },
               {
@@ -215,14 +230,14 @@
                   "stretchVertically": true,
                   "cmdHeadline": {
                     "headlineLevel": 3,
-                    "headlineText": "Security and safety",
+                    "headlineText": "Sicherheit wird groß geschrieben",
                     "textAlign": "center"
                   },
                   "headlinePosition": "body",
                   "cmdIcon": {
                     "iconClass": "icon-security-settings"
                   },
-                  "textBody": "Your data is anonymous and can only be viewed by registered members to protect you privacy."
+                  "textBody": "Ihre Profildaten sind nur für angemeldet Mitglieder sichtbar und Ihre Privatsphäre wird von uns geschützt."
                 }
               }
             ]

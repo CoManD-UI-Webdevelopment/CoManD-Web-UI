@@ -16,10 +16,9 @@
                         <span>Select template</span>
                         <select id="select-template" v-model="selectedTemplate">
                             <option value="blank">Blank</option>
-                            <option value="business">Business</option>
-                            <option value="casual">Casual</option>
-                            <option value="dating">Dating</option>
-                            <option value="influencer">Influencer</option>
+                            <option value="material-web">Material-Web</option>
+                            <option value="neumorphic">Neumorphic</option>
+                            <option value="tailwind">Tailwind</option>
                         </select>
                     </label>
                 </div>
@@ -29,8 +28,10 @@
 </template>
 
 <script>
-import {mapActions} from "pinia";
+import {mapActions, mapState} from "pinia";
 import {usePiniaStore} from "../../stores/pinia.js";
+import {useWebUIStore} from "../../stores/web-ui.js"
+import {applyTemplate} from "comand-component-library"
 
 export default {
     name: "EditModeTemplateSettings",
@@ -42,7 +43,7 @@ export default {
     data() {
         return {
             openBoxStatus: false,
-            selectedTemplate: "blank"
+            selectedTemplate: useWebUIStore().template || "blank"
         }
     },
     props: {
@@ -72,19 +73,8 @@ export default {
             immediate: true
         },
         selectedTemplate() {
-            let linkTag = document.head.querySelector("link[rel='stylesheet']")
-
-            if (linkTag) {
-                linkTag.remove()
-            }
-
-            if (this.selectedTemplate !== "blank") {
-                let newLink = document.createElement("link")
-                newLink.rel = "stylesheet"
-                newLink.href = "../node_modules/comand-frontend-framework/dist/templates/" + this.selectedTemplate + ".css"
-
-                document.head.appendChild(newLink)
-            }
+            // template-css is loaded from comand-frontend-framework (blank = no template-css)
+            applyTemplate(this.selectedTemplate)
 
             this.$emit("input", this.selectedTemplate)
         }

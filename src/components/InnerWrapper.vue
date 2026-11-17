@@ -33,7 +33,7 @@
                 :components="section.components"
                 :useFullDeviceWidth="section.useFullDeviceWidth"
                 :useInnerSection="section.useInnerSection"
-                :contentType="section.contentType"
+                :containerType="section.containerType"
                 :contentOrientation="section.contentOrientation"
                 :cmdHeadline="section.cmdHeadline"
             />
@@ -49,7 +49,7 @@ import BaseI18nComponent from "./mixins/BaseI18nComponent"
 import {mapActions, mapState} from "pinia"
 import {usePiniaStore} from "../stores/pinia"
 import {useWebUIStore} from "../stores/web-ui"
-import {createUuid} from "comand-component-library";
+import {createUuid} from "comand-component-library"
 
 export default {
     mixins: [

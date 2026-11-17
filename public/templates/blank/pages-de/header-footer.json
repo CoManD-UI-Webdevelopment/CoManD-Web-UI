@@ -2,10 +2,6 @@
   "siteHeader": {
     "navigationInline": true,
     "props": {
-      "cmdCompanyLogo": {
-        "pathDefaultLogo": "/media/images/logos/logo.svg",
-        "altText": "Company Logo"
-      },
       "cmdMainNavigation": {
         "closeOffcanvas": {
           "iconClass": "icon-cancel",
@@ -16,7 +12,7 @@
     }
   },
   "siteFooter": {
-    "orientation": "horizontal",
+    "contentOrientation": "horizontal",
     "components": [
       {
         "name": "CmdContainer",
@@ -26,14 +22,16 @@
         },
         "components": [
           {
-            "name": "CmdListOfLinks",
+            "name": "CmdList",
             "handlers": "toggleSection",
             "props": {
-              "cmdHeadline": {
-              },
               "orientation": "vertical",
-              "textAlign": "right",
-              "links": [
+              "align": "right",
+              "cmdHeadline": {
+                "headlineText": "Wichtige Links",
+                "headlineLevel": 6
+              },
+              "items": [
                 {
                   "linkType": "href",
                   "text": "",

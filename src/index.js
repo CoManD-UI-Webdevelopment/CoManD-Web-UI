@@ -3,10 +3,10 @@ import {createPinia} from "pinia"
 import {useWebUIStore} from "./stores/web-ui.js"
 import router from "./router"
 import * as componentLibraryComponents from "comand-component-library"
-import * as webUiComponents from "./components"
+import * as webUiComponents from "./web-ui-components.js"
 import * as directives from "./directives"
 
-export * from "./components"
+export * from "./web-ui-components.js"
 
 import axios from "axios"
 
@@ -55,7 +55,7 @@ function processSite(site, store, routerConfigurer) {
     })
     store.setDefaultMetaData(site.defaultMetadata)
 
-    store.setTemplate(site.template)
+    store.setTemplate(site.template, site.contentFolder)
 
     if (site.siteStructure?.length > 0) {
         store.loadSiteStructure(site.siteStructure)
@@ -94,7 +94,7 @@ function bootstrap(app, routerConfigurer) {
         app.component(name, component)
     })
     Object.entries(componentLibraryComponents).forEach(([name, component]) => {
-       if(name==="EditComponentWrapper") {
+       if(name==="EditComponentWrapper" || ["applyTemplate", "setTemplateUrls", "TEMPLATES", "TEMPLATE_LINK_ID"].includes(name)) {
            return
        }
 
@@ -134,3 +134,7 @@ export function bootstrapAndMount(options) {
             app.use(router).mount("#app")
         })
 }
+
+export {useLanguageData} from "./composables/useLanguageData.js"
+
+

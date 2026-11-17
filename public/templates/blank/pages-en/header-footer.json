@@ -1,11 +1,6 @@
 {
   "siteHeader": {
     "navigationInline": true,
-    "propsLogo": {
-      "pathDefaultLogo": "/media/images/logos/logo.svg",
-      "pathDarkmodeLogo": "/media/images/logos/logo-darkmode.svg",
-      "altText": "Company Logo"
-    },
     "props": {
       "cmdMainNavigation": {
         "closeOffcanvas": {
@@ -27,12 +22,16 @@
         },
         "components": [
           {
-            "name": "CmdListOfLinks",
+            "name": "CmdList",
             "handlers": "toggleSection",
             "props": {
               "orientation": "vertical",
               "textAlign": "right",
-              "links": [
+              "cmdHeadline": {
+                "headlineText": "Related Links",
+                "headlineLevel": 6
+              },
+              "items": [
                 {
                   "type": "href",
                   "text": "",

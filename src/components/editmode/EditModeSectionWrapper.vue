@@ -195,7 +195,7 @@ main {
 
             &.active {
                 .section-id {
-                    color: var(--pure-white);
+                    color: var(--color-white);
                     display: block;
                 }
             }
@@ -208,7 +208,7 @@ main {
 
                 .action-buttons {
                     margin: 0;
-                    gap: var(--default-gap-half);
+                    gap: var(--gap-small);
                 }
             }
         }
@@ -222,7 +222,7 @@ main {
                 border-style: dashed;
 
                 &:focus {
-                    background: var(--pure-white);
+                    background: var(--color-white);
                 }
             }
         }
@@ -265,7 +265,7 @@ main {
                     border-style: dashed;
 
                     &:focus {
-                        background: var(--pure-white);
+                        background: var(--color-white);
                     }
                 }
             }

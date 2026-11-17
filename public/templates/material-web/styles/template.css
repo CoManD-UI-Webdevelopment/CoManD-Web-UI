@@ -48,6 +48,8 @@ button, .button {
         nav {
             --nav-border-radius: 2rem;
             background: var(--secondary-color);
+            --main-navigation-hyperlink-color: var(--secondary-color-contrast-text); /* text ON the secondary-color background */
+            --main-navigation-hyperlink-color-active: var(--secondary-color-contrast-text);
             filter: blur(--background-blur);
             border-radius: var(--nav-border-radius);
 
@@ -70,7 +72,7 @@ button, .button {
                         padding-bottom: .5rem;
 
                         span {
-                            color: var(--color-white);
+                            color: var(--secondary-color-contrast-text);
                         }
                     }
                 }
@@ -83,6 +85,7 @@ button, .button {
     height: 100dvh;
     background: url("/public/media/images/content-images/couple.jpg") no-repeat top center;
     background-size: cover;
+    flex: none;
 }
 
 [id$="welcome"] {
@@ -116,14 +119,11 @@ button, .button {
     }
 
     .cmd-login-form, .register-form fieldset, .cmd-tabs > div {
-        backdrop-filter: var(--background-blur);
-        background: var(--background-high-transparency);
+        background: var(--background-low-transparency);
     }
 
     #age-wrapper {
         > label {
-            width: 40%;
-
             &:last-of-type {
                 margin-left: auto;
                 flex: none;

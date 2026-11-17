@@ -2,12 +2,14 @@
   "en": {
     "main_navigation.close_navigation": "Close navigation",
     "main_navigation.menuentry.homepage":"Home",
+    "main_navigation.menuentry.about_us": "About us",
     "main_navigation.menuentry.content": "Content",
     "main_navigation.menuentry.gallery": "Gallery",
     "main_navigation.menuentry.faq": "Faq",
     "main_navigation.menuentry.team": "Team",
     "breadcrumbs.labeltext.you_are_here": "You are here:",
     "back_to_top_button.tooltip": "Back to top",
+    "box.most_viewed_profiles.headline": "Most viewed Profiles",
     "basic_form.legend": "Basic Form",
     "basic_form.labeltext.salutation_male": "Mr.",
     "basic_form.labeltext.salutation_female": "Mrs.",
@@ -55,6 +57,8 @@
     "opening_hours.misc_info": "Miscellaneous information",
     "register_form.headline.find_a_soul_mate": "Find a Soul-Mate",
     "register_form.labeltext.i_am_a": "I am a",
+    "register_form.selectoption.male": "Male",
+    "register_form.selectoption.female": "Female",
     "register_form.labeltext.searching_for_a": "searching for a",
     "register_form.labeltext.age_from": "from age",
     "register_form.labeltext.age_to": "to age",
@@ -82,17 +86,21 @@
     "cookie_disclaimer.google_maps.description": "This cookie enables the Google Map™.",
     "cookie_disclaimer.google_maps.link_data_privacy_label.label": "Details for this cookie:",
     "cookie_disclaimer.google_maps.link_data_privacy_label.link": "https://policies.google.com/privacy?hl=en-US",
-    "cookie_disclaimer.google_maps.link_data_privacy_label.link_text": "Open data privacy from Google"
+    "cookie_disclaimer.google_maps.link_data_privacy_label.link_text": "Open data privacy from Google",
+    "google_maps.system_message.accept_terms": "You must accept cookies to vie the map!",
+    "google_maps.button_text.accept_required_cookies": "Accept required cookies"
   },
   "de": {
     "main_navigation.close_navigation": "Navigation schließen",
     "main_navigation.menuentry.homepage":"Startseite",
+    "main_navigation.menuentry.about_us": "Über uns",
     "main_navigation.menuentry.content": "Content",
     "main_navigation.menuentry.gallery": "Galerie",
     "main_navigation.menuentry.faq": "Faq",
     "main_navigation.menuentry.team": "Team",
     "breadcrumbs.labeltext.you_are_here": "Sie sind hier:",
     "back_to_top_button.tooltip": "Zurück zum Anfang",
+    "box.most_viewed_profiles.headline": "Meist angesehene Profile",
     "basic_form.legend": "Basic Form",
     "basic_form.labeltext.salutation_male": "Herr",
     "basic_form.labeltext.salutation_female": "Frau",
@@ -140,6 +148,8 @@
     "opening_hours.misc_info": "Sonstige Angaben kommen hierhin",
     "register_form.headline.find_a_soul_mate": "Finden Sie Ihren Seelenverwandten",
     "register_form.labeltext.i_am_a": "Ich bin",
+    "register_form.selectoption.male": "Mann",
+    "register_form.selectoption.female": "Frau",
     "register_form.labeltext.searching_for_a": "und suche",
     "register_form.labeltext.age_from": "im Alter von",
     "register_form.labeltext.age_to": "bis",
@@ -167,6 +177,8 @@
     "cookie_disclaimer.google_maps.description": "Dieser Cookie aktiviert die Google Map™.",
     "cookie_disclaimer.google_maps.link_data_privacy_label.label": "Details zu diesem Cookie:",
     "cookie_disclaimer.google_maps.link_data_privacy_label.link": "https://policies.google.com/privacy?hl=de-DE",
-    "cookie_disclaimer.google_maps.link_data_privacy_label.link_text": "Datenschutzerklärung von Google öffnen"
+    "cookie_disclaimer.google_maps.link_data_privacy_label.link_text": "Datenschutzerklärung von Google öffnen",
+    "google_maps.accept_terms": "Sie müssen die Cookies akzeptieren, um die Karte zu sehen!",
+    "google_maps.button_text.accept_required_cookies": "Erforderliche Cookies akzepzieren"
   }
 }

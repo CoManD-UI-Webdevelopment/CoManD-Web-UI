@@ -5,56 +5,37 @@
 <script>
 import {mapState} from "pinia";
 import {useWebUIStore} from "./stores/web-ui"
+import { responsiveBodyClasses, applyTemplate } from "comand-component-library"
+
+const SITE_OVERRIDE_LINK_ID = "cmd-site-template-overrides"
 
 export default {
     computed: {
         ...mapState(useWebUIStore, ["template"])
     },
-    created() {
-        (function() {
-            // function to detect device width and add appropriate class
-            function updateBodyClass() {
-                const body = document.body
+    async created() {
+        responsiveBodyClasses()
 
-                // Remove any previous width-based classes
-                body.classList.remove('device-width-large', 'device-width-medium', 'device-width-small')
+        // template-css always comes from comand-frontend-framework ("blank" = no template-css)
+        applyTemplate(this.template)
 
-                // Add class based on width
-                if (window.innerWidth <= 600) {
-                    body.classList.add('device-width-small')
-                } else if (window.innerWidth <= 1024) {
-                    body.classList.add('device-width-medium')
-                } else {
-                    body.classList.add('device-width-large')
-                }
+        // optional per-site overrides (tokens only) - loaded AFTER the framework-template, only if the file exists
+        const overridesUrl = "/templates/" + this.template + "/styles/template.css"
+        try {
+            const response = await fetch(overridesUrl, {method: "HEAD"})
+
+            if (response.ok && response.headers.get("content-type")?.includes("css")) {
+                document.getElementById(SITE_OVERRIDE_LINK_ID)?.remove()
+
+                const linkTagOverrides = document.createElement("link")
+                linkTagOverrides.id = SITE_OVERRIDE_LINK_ID
+                linkTagOverrides.rel = "stylesheet"
+                linkTagOverrides.href = overridesUrl
+                document.head.append(linkTagOverrides)
             }
-
-            // initial class assignment
-            updateBodyClass()
-
-            // update the class on window resize
-            window.addEventListener('resize', function() {
-                updateBodyClass()
-            });
-        })();
-
-
-        if (this.template === "dating") {
-            // add link from frontend-framework via cdn
-            const linkTagCdn = document.createElement("link")
-            linkTagCdn.setAttribute("rel", "stylesheet")
-            linkTagCdn.setAttribute("type", "text/css")
-            linkTagCdn.href = "../node_modules/comand-frontend-framework/dist/templates/dating.css"
-           // linkTagCdn.setAttribute("href", "https://cdn.jsdelivr.net/npm/comand-frontend-framework@4/dist/templates/dating.min.css")
-            document.head.append(linkTagCdn)
+        } catch {
+            // no overrides available - nothing to do
         }
-
-        // add link for local template.css
-        const linkTagLocalCss = document.createElement("link")
-        linkTagLocalCss.setAttribute("rel", "stylesheet")
-        linkTagLocalCss.setAttribute("type", "text/css")
-        linkTagLocalCss.setAttribute("href", "/templates/" + this.template + "/styles/template.css")
-        document.head.append(linkTagLocalCss)
     }
 }
  </script>

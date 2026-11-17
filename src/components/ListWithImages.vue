@@ -36,9 +36,11 @@ export default {
     flex-direction: column;
     justify-content: space-between;
     margin: 0;
+    height: 100%;
 
     li {
         --local-transition: all linear .3s;
+        
         list-style-type: none;
         display: flex;
         gap: var(--default-gap);

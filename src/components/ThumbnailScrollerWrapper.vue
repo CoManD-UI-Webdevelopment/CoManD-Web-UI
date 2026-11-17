@@ -1,5 +1,5 @@
 <template>
-    <div id="thumbnail-scroller-wrapper">
+    <div class="thumbnail-scroller-wrapper">
         <CmdThumbnailScroller :thumbnailScrollerItems="personas" :cmdHeadline="cmdHeadline" />
     </div>
 </template>
