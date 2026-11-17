@@ -1,0 +1,36 @@
+{
+  "metadata": {
+    "title": "About us",
+    "description": "Learn more about us, our team and the way we work.",
+    "rating": "",
+    "robots": "index/follow",
+    "author": ""
+  },
+  "mainContent": {
+    "pageHeadlineText": "About us",
+    "sections": [
+      {
+        "id": "section1",
+        "iconClass": "icon-home",
+        "allowAddComponent": true,
+        "showLinkInMainNavigation": false,
+        "navEntry": "About us",
+        "order": 1,
+        "components": [
+          {
+            "name": "CmdParagraph",
+            "props": {
+              "content": "Learn more about us, our team and the way we work."
+            }
+          },
+          {
+            "name": "CmdParagraph",
+            "props": {
+              "content": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

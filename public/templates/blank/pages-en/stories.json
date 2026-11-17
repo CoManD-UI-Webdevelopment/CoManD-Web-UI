@@ -1,0 +1,36 @@
+{
+  "metadata": {
+    "title": "Stories",
+    "description": "Success stories and experiences of our members.",
+    "rating": "",
+    "robots": "index/follow",
+    "author": ""
+  },
+  "mainContent": {
+    "pageHeadlineText": "Stories",
+    "sections": [
+      {
+        "id": "section1",
+        "iconClass": "icon-home",
+        "allowAddComponent": true,
+        "showLinkInMainNavigation": false,
+        "navEntry": "Stories",
+        "order": 1,
+        "components": [
+          {
+            "name": "CmdParagraph",
+            "props": {
+              "content": "Success stories and experiences of our members."
+            }
+          },
+          {
+            "name": "CmdParagraph",
+            "props": {
+              "content": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

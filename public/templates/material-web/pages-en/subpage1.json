@@ -1,0 +1,36 @@
+{
+  "metadata": {
+    "title": "Subpage 1",
+    "description": "This is the content of the first subpage.",
+    "rating": "",
+    "robots": "index/follow",
+    "author": ""
+  },
+  "mainContent": {
+    "pageHeadlineText": "Subpage 1",
+    "sections": [
+      {
+        "id": "section1",
+        "iconClass": "icon-home",
+        "allowAddComponent": true,
+        "showLinkInMainNavigation": false,
+        "navEntry": "Subpage 1",
+        "order": 1,
+        "components": [
+          {
+            "name": "CmdParagraph",
+            "props": {
+              "content": "This is the content of the first subpage."
+            }
+          },
+          {
+            "name": "CmdParagraph",
+            "props": {
+              "content": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -23,6 +23,18 @@ _Add every new change here before it is released._
 - `--default-background` (fixed light gray, does not follow the color scheme) replaced by the new framework token `--color-scheme-background-subtle` in the striped sections of the small-screen layout and the edit-mode sidebar (light text on light gray in dark mode).
 - Library fixes that remove findings here: `CmdParagraph` renders a `<div>` when its (HTML) content contains block elements (`<p>` in `<p>`), empty `CmdHeadline`s are not rendered, tab/pagination/landmark names, unique ids (see the component library changelog).
 
+### Fixed (subpages)
+- Subpages were empty: `about-us`, `subpage1`, `subpage2`, `sub-subpage`, `profile`, `schwerpunkte` (and `stories` in `blank` de/en and `material-web` en) had no page JSON. Added `public/templates/{blank,material-web}/pages-{de,en}/<page>.json` (headline + text).
+- Page header (breadcrumbs, headline) was pushed to the bottom of pages with little content (`margin-top: auto` on the wrapper that contains header, content AND footer). Now the wrapper fills the height and only `.cmd-page-footer` has `margin-top: auto` (`comand-web-ui-global-styles.scss`).
+- Breadcrumbs: crumbs of type `""` (parents/current page, not links) render as text (was an empty `<li>` and Vue warning `linkType`) - see `CmdBreadcrumbs` in the component library.
+- `faq.json` (material-web): `openBoxesByDefault: []` (was `false`, Vue prop warning).
+- All pages have the same content width: the wrapper section was a flex item with auto margins and shrank to its content (faq 774px, stories 1040px, homepage 1410px at 1600px viewport); now `width: 100%` (limited by `max-width`).
+- material-web per-site override: the main navigation uses `--primary-color` (purple, like all other UI elements) instead of `--secondary-color` (green); text uses `--primary-color-contrast-text`.
+- New check: `tools/test-subpages.mjs`. It also checks that all pages have the same width.
+
+### Fixed (routes of nested subpages)
+- `src/index.js` `processPage`: the route path contains ALL parents (`/de/about-us/subpage1/sub-subpage`, was `/de/subpage1/sub-subpage`: only the direct parent). Navigation links and breadcrumbs follow automatically (named routes); hard-coded old URLs of third-level pages change.
+
 ### Changed (Dev-Server)
 - `vite.config.js`: nutzt standardmaessig die lokalen Repos `comand-frontend-framework/dist` und `comand-component-library/dist`, wenn vorhanden (Opt-out `CMD_LOCAL_SIBLINGS=0`); sonst die installierten Pakete.
 

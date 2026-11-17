@@ -81,7 +81,7 @@ function processPage(page, store, routerConfigurer, path) {
     }
     router.addRoute(route)
     if (page.subEntries?.length > 0) {
-        page.subEntries.forEach(subPage => processPage(subPage, store, routerConfigurer, [page.id]))
+        page.subEntries.forEach(subPage => processPage(subPage, store, routerConfigurer, [...path, page.id]))
     }
 
     if (path.length === 0) {

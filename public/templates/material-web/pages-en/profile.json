@@ -1,0 +1,36 @@
+{
+  "metadata": {
+    "title": "Profile",
+    "description": "Manage your profile and personal settings here.",
+    "rating": "",
+    "robots": "index/follow",
+    "author": ""
+  },
+  "mainContent": {
+    "pageHeadlineText": "Profile",
+    "sections": [
+      {
+        "id": "section1",
+        "iconClass": "icon-home",
+        "allowAddComponent": true,
+        "showLinkInMainNavigation": false,
+        "navEntry": "Profile",
+        "order": 1,
+        "components": [
+          {
+            "name": "CmdParagraph",
+            "props": {
+              "content": "Manage your profile and personal settings here."
+            }
+          },
+          {
+            "name": "CmdParagraph",
+            "props": {
+              "content": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "metadata": {
+    "title": "Unterseite 1",
+    "description": "Dies ist der Inhalt der ersten Unterseite.",
+    "rating": "",
+    "robots": "index/follow",
+    "author": ""
+  },
+  "mainContent": {
+    "pageHeadlineText": "Unterseite 1",
+    "sections": [
+      {
+        "id": "section1",
+        "iconClass": "icon-home",
+        "allowAddComponent": true,
+        "showLinkInMainNavigation": false,
+        "navEntry": "Unterseite 1",
+        "order": 1,
+        "components": [
+          {
+            "name": "CmdParagraph",
+            "props": {
+              "content": "Dies ist der Inhalt der ersten Unterseite."
+            }
+          },
+          {
+            "name": "CmdParagraph",
+            "props": {
+              "content": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

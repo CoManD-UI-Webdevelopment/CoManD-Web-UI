@@ -169,7 +169,7 @@
                   "useRowViewAsDefault": true,
                   "useGap": true,
                   "allowUserToToggleOrientation": false,
-                  "openBoxesByDefault": false,
+                  "openBoxesByDefault": [],
                   "cmdHeadline": {
                     "headlineText": "Frequently Asked Questions",
                     "headlineLevel": 4

@@ -47,9 +47,9 @@ button, .button {
     header .main-navigation-wrapper {
         nav {
             --nav-border-radius: 2rem;
-            background: var(--secondary-color);
-            --main-navigation-hyperlink-color: var(--secondary-color-contrast-text); /* text ON the secondary-color background */
-            --main-navigation-hyperlink-color-active: var(--secondary-color-contrast-text);
+            background: var(--primary-color);
+            --main-navigation-hyperlink-color: var(--primary-color-contrast-text); /* text ON the primary-color background */
+            --main-navigation-hyperlink-color-active: var(--primary-color-contrast-text);
             filter: blur(--background-blur);
             border-radius: var(--nav-border-radius);
 
@@ -72,7 +72,7 @@ button, .button {
                         padding-bottom: .5rem;
 
                         span {
-                            color: var(--secondary-color-contrast-text);
+                            color: var(--primary-color-contrast-text);
                         }
                     }
                 }
