@@ -4,6 +4,8 @@ All notable changes are documented here, newest first. Versioning follows `packa
 
 ## [Unreleased]
 
+## [2.0.0] – 2026-11-17
+
 _Add every new change here before it is released._
 
 ### Added
@@ -73,6 +75,6 @@ Stand HEAD `78d5a30` (2025-06-01, package.json dort 1.0.97). 44 Dateien (+232/�
 - ~~alte Prop-Namen in `homepage.json`/`content.json`/`CmdTextImageBlockSettings.vue`~~ => **behoben, siehe `### Fixed (Prop-Migration)`**. (`closeOffcanvas` in `header-footer.json`/`CmdWebsite.vue` ist weiterhin gültig: es ist eine Prop von `CmdMainNavigation`.)
 - Nicht definierte CSS-Variablen: `--pure-white`, `--pure-black`, `--dark-gray`, `--default-gap-half`, `--default-gap-third`, `--icon-font-size`, `--hyperlink-color-hue` (Edit-Mode-Styles, `comand-web-ui-global-styles.scss`).
 
-## [1.1.04] – current `package.json` version
+## [1.1.04]
 - Depends on `comand-frontend-framework ^4.5.0`, `comand-component-library ^4.3.28`.
 - Recent history: SEO fixes; i18n and bug fixes for `CmdCookieDisclaimer` (mapped `currentLanguage` getter); CSS merged into `css.js`; router fixes; fixes for `RenderComponents`.
